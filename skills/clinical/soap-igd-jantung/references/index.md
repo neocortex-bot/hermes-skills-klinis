@@ -22,6 +22,7 @@ Gunakan kata kunci di bawah untuk mencari kasus yang mirip.
 | Gagal Jantung | `template-gagal-jantung.md` | Pasien dengan keluhan utama sesak nafas/gagal jantung, DPJP tentative dr. Aussie |
 | Bradikardia | `template-bradikardia.md` | Pasien dengan keluhan lemas/pingsan, bradikardia simtomatik (TAVB, SND, sinus arrest), DPJP tentative dr. Aussie |
 | Acute Pericarditis | `template-acute-pericarditis.md` | Nyeri dada pleuritik, membaik duduk membungkuk, ST elevasi difus + PR depresi, friction rub |
+|| Takiaritmia / Palpitasi | `template-takiaritmia.md` | Berdebar, SVT, WCT, VT, WPW, AF, Flutter — mencakup AVRT, AVNRT, VT, WPW syndrome |
 
 Template berikutnya akan ditambahkan sesuai arahan Dokter.
 

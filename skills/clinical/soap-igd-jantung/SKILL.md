@@ -36,6 +36,7 @@ triggers:
 | Nyeri dada | (+) | (-) | Tajam, pleuritik | Membaik duduk, demam, friction rub, ST difus + PR depresi | **Acute Pericarditis** |
 | Sesak nafas | (+) | (+) | Hilang timbul | JVP R+3, ronkhi basal, edema | **Gagal Jantung** |
 | Lemas, pingsan | (+) | (-) | Hilang timbul | Pusing, berdebar, nyeri ulu hati, AV block/SND | **Bradikardia** |
+| **Berdebar/palpitasi** | *tergantung* | *tergantung* | *mungkin ada saat episode* | Pusing, nyeri ulu hati, mual, sinkop, neck pounding, onset akut/saat istirahat, denyut cepat | **Takiaritmia** |
 
 Template tersedia di `references/`:
 | Template | File |
@@ -44,7 +45,8 @@ Template tersedia di `references/`:
 | ACS Non-PPCI | `template-acs-non-ppci.md` |
 | Gagal Jantung | `template-gagal-jantung.md` |
 | Bradikardia | `template-bradikardia.md` |
-| Acute Pericarditis | `template-acute-pericarditis.md` |
+| Acute Pericarditis | `template-acute-pericarditis.md` | Nyeri dada pleuritik, membaik duduk membungkuk, ST elevasi difus + PR depresi, friction rub |
+| Takiaritmia / Palpitasi | `template-takiaritmia.md` | Berdebar, SVT, WCT, VT, WPW, AF, Flutter — mencakup AVRT, AVNRT, VT, WPW syndrome |
 
 ```
 [Assalamualaikum wr wb./Selamat malam dokter,] tabe Dokter, mohon izin melaporkan pasien [baru/lanjutan] di *IGD PJT [Redzone bed X/...]* atas nama:

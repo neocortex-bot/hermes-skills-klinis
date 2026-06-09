@@ -379,7 +379,7 @@ if __name__ == "__main__":
             date="08-05-2026",
             lv_func="Moderately Abnormal", ef_teich=37.1, ef_biplane=33.2,
             rv_func="Normal", tapse=1.7, s_lat=15.5,
-            aorta="3 cuspis, calcification (-), Normal Function and Movement",
+            aorta="3 cuspis, calcification (-), Normal",
             tricuspid="Normal Function and Movement",
             pulmonal="Normal Function and Movement",
             mitral="Normal Function and Movement",
