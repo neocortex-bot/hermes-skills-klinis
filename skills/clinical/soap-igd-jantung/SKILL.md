@@ -10,6 +10,33 @@ triggers:
 
 # SOAP IGD PJT Jantung
 
+## ⛔ TOP 10 KESALAHAN FATAL — DIBACA SEBELUM BUAT SOAP ⛔
+
+> **CACHE CONTEXT**: Kamu sudah berkali-kali salah dan mempermalukan diri. Ini daftar kesalahan yang TIDAK BOLEH diulangi.
+
+| # | Kesalahan | Yang BENAR |
+|---|---|---|
+| 1 | `*S:*` atau `*O:*` pakai bold | `S:` dan `O:` **POLOS** tanpa asterisk |
+| 2 | `*A (Assessment):*` | `*Mohon izin kami assess dengan:*` |
+| 3 | `*Terapi:*` | `*Mohon izin kami terapi dengan:*` |
+| 4 | TTV berjejer pipe: `TD: 141/88 \| Nadi: 100` | Tiap baris baru, nama panjang: `Tekanan Darah:`, `Nadi:`, `Pernapasan:`, `Suhu:`, `Saturasi:` |
+| 5 | TTV disingkat: `TD:`, `RR:`, `HR:` | `Tekanan Darah:`, `Pernapasan:`, `Nadi:` |
+| 6 | `(-)` / `(+)` / `[-/+]` di fisis | Narasi: `tidak ada` / `ada` |
+| 7 | Lab berjejer pipe: `WBC: 10 \| Hb: 12` | Tiap parameter baris sendiri |
+| 8 | **LAB TIDAK DICANTUMKAN** (pakboss: "mana labnya tolol") | SELALU cantumkan `*Hasil Lab:*` meski kosong |
+| 9 | EKG cuma 1-2 kata: `SVT, HR 136` | Sequential lengkap: Rhythm, HR, axis, P, PR, QRS, ST, T, kesan |
+| 10 | Tidak pakai code block | SELALU bungkus SOAP di \`\`\` |
+
+### ATURAN BOLD SEKALI LAGI:
+- 🟢 **PAKAI** `*...*`: lokasi pasien, nama pasien, EKG, Hasil Lab, Mohon izin assess, Mohon izin terapi, Plan
+- 🔴 **JANGAN PAKAI** `*...*`: S, O, dan semua body/data/lab/TTV/deskripsi/fisis
+
+### ATURAN OUTPUT:
+- SELALU bungkus di \`\`\` (code block) agar asterisk literal saat dicopy ke WhatsApp
+
+### CACHE — CONTOH EMAS (Kasus Ny. Nofri):
+Lihat `references/kasus-05.md` untuk contoh format yang SUDAH VALID dan DITERIMA pakboss.
+
 ## Prinsip
 - **1 sesi = 1 pasien** — tidak campur data antar pasien
 - **Kumulatif** — setiap informasi baru ditambahkan ke SOAP yang sudah ada
@@ -48,125 +75,7 @@ Template tersedia di `references/`:
 | Acute Pericarditis | `template-acute-pericarditis.md` | Nyeri dada pleuritik, membaik duduk membungkuk, ST elevasi difus + PR depresi, friction rub |
 | Takiaritmia / Palpitasi | `template-takiaritmia.md` | Berdebar, SVT, WCT, VT, WPW, AF, Flutter — mencakup AVRT, AVNRT, VT, WPW syndrome |
 
-```
-[Assalamualaikum wr wb./Selamat malam dokter,] tabe Dokter, mohon izin melaporkan pasien [baru/lanjutan] di *IGD PJT [Redzone bed X/...]* atas nama:
-
-*[Tn./Ny.] [Nama]/[DD-MM-YYYY]/[Umur] tahun/RM [nomor]*
-
-_DPJP Utama [dan Tindakan]: [dr./Dr.dr. Nama, Spesialis]_
-_[asal rujukan + diagnosis rujukan jika ada]_
-
-*S:*
-- [Keluhan utama]: [onset], [memberat sejak], [karakteristik detail]
-  - Nyeri dada: [lokasi], [onset], [kualitas], [penjalaran], [NRS], [faktor pencetus/peredah], [riwayat]
-  - Sesak: [onset], DOE [ada/tidak], PND [ada/tidak], orthopneu [ada/tidak], [riwayat]
-  - Berdebar: [ada/tidak], [riwayat]
-- [Keluhan lain]: [batuk], [demam], [mual/muntah], [BAB/BAK], [keluhan spesifik lain]
-- [Riwayat rawat di RS perujuk] — WAJIB jika pasien rujukan:
-  - Diagnosis di RS perujuk: [apa]
-  - Lama rawat: [X hari]
-  - Terapi yang diberikan: [daftar obat + dosis + rute]
-- [Riwayat kontrol di poli/RS sebelumnya — jika ada]
-
-Faktor Risiko Kardiovaskular
-- Riwayat Hipertensi: [ada/tidak, onset, keteraturan minum obat]
-- Riwayat Diabetes Mellitus: [ada/tidak]
-- Riwayat Merokok: [ada/tidak, durasi, jumlah, status berhenti]
-- Riwayat Penyakit Jantung dalam keluarga: [ada/tidak, detail]
-
-*O:*
-[GCS/Kesadaran]
-Tekanan Darah: [sistol/diastol] mmHg
-Nadi: [x]/menit, [reguler/ireguler]
-Nafas: [x]/menit
-Suhu: [x.x]°C
-SpO2: [x]% [room air/dengan O2] → [x]% [NRM/NC x lpm]
-
-BB: [x] kg | TB: [x] cm
-[BPJS kelas: X — jika ada]
-
-Pemeriksaan Fisik
-Mata: konjungtiva pucat tidak ada, sklera ikterik tidak ada
-Leher: JVP (tidak disebutkan / R+... cmH2O)
-Thorax: BP vesikuler, ronkhi tidak ada, wheezing tidak ada
-Jantung: BJ I/II murni, reguler/ireguler, murmur tidak ada, gallop tidak ada
-Abdomen: datar, supel, hepar/lien tidak teraba, nyeri tekan tidak ada
-Ekstremitas: edema tidak ada, akral hangat, CRT <2 detik
-
-*EKG [lokasi] ([tanggal]):*
-Sinus Rhythm, HR [x] bpm, reguler, Normoaxis, P wave 0.06 S, PR interval 0.18 S, QRS Duration 0.06 S, [isi kesan Dokter sesuai arahan — format teks panjang kontinu, BUKAN bullet point]
-
-*Laboratorium [lokasi] ([tanggal]):*
-WBC: [x] | Hb: [x] | PLT: [x]
-Neut/Lymph: [x]/[x]
-[PT/INR/APTT: ...]
-GDS: [x]
-Na/K/Cl: [x]/[x]/[x]
-Ureum/Kreatinin: [x]/[x] (eGFR [x])
-SGOT/SGPT: [x]/[x]
-HbsAg/Anti HCV: [reaktif/nonreaktif]
-Hs Trop I: [x]
-[Albumin: ...]
-[AGD: pH, pO2, pCO2, HCO3, Laktat]
-Kesan: [normal/abnormal...]
-
-*Foto Thorax [lokasi] ([tanggal]):*
-[Temuan]
-
-*USG Abdomen [lokasi] ([tanggal]):*
-[Temuan]
-
-*Echocardiography [lokasi] ([tanggal]):*
-1. LV Systolic Function: [Normal/Mildly/Moderately/Severely Abnormal], EF [x]% (TEICH), EF [x]% (BIPLANE)
-2. RV Systolic Function: [Normal/Reduced], TAPSE [x] cm, S' lateral [x] cm/s
-3. Cardiac Valves:
-   - Mitral: [temuan]
-   - Aorta: [temuan]
-   - Tricuspid: [temuan]
-   - Pulmonal: [temuan]
-4. Cardiac Dimension: [deskripsi chamber] (LA mayor [x], LA minor [x], RA mayor [x], RA minor [x], LVIDd [x], RVDB [x], LA/Ao [x])
-5. LV Geometry: [Normal/Concentric/Eccentric] LVH (LVMI [x] g/m2, RWT [x])
-6. Regional Wall Motion: [Normokinetic/Hypokinetic/Akinetic/Dyskinetic] [segmen]
-7. eRAP: [x] mmHg (IVC exp [x] cm, IVC insp [x] cm)
-8. LV Diastolic Function: [Grade I/II/III, E/A, E', E/E']
-9. Pericardial Effusion: [-/+]
-10. [LV SEC, thrombus, dll...]
-
-Conclusion:
-[Ringkasan temuan echo]
-
-Echo Hemodinamik:
-TD: [x/x] mmHg | MAP: [x] mmHg | HR: [x] bpm
-LVOT Diam: [x] cm | LVOT VTI: [x] cm
-LVSV: [x] ml | LVCO: [x] L/min
-eRAP: [x] mmHg | SVR: [x] dynes/sec/cm-5
-BSA: [x] m2 | CI: [x] L/min/m2
-CPO: [x] watt | CPI: [x] watt/m2
-
-Lung Ultrasound:
-Lung sliding (+), pleural line reguler, A-line well visualized, B-line (-), Regular and no thickening of pleural line, C-line (-). Pleural effusion (-), Pericardial effusion (-).
-
-*Laporan PCI/Tindakan ([tanggal]):*
-[Dominance, temuan per vessel, kesimpulan, hasil]
-
-*Mohon izin kami assess dengan:*
-- [Diagnosis 1] [skor/scoring relevan]
-- [Diagnosis 2]
-- [...]
-
-*Mohon izin kami terapi dengan:*
-- [Nama obat] [dosis]/[frekuensi]/[rute] [(KP/Tunda/...)]
-- [...]
-
-*Plan:*
-- [Monitoring...]
-- [Pemeriksaan...]
-- [Konsul...]
-- [Rencana rawat/pindah...]
-- [...]
-
-[Selanjutnya mohon arahan Dokter. Terima kasih Dokter. / Tabe dokter, mohon arahannya dokter, terima kasih dokter.]
-```
+> ⚠️ TEMPLATE LAMA DI ATAS SUDAH TIDAK DIGUNAKAN — lihat **Alur Kerja** di bawah untuk format SOAP terbaru yang sudah divalidasi.
 
 ---
 
@@ -339,7 +248,7 @@ Pakai `*Mohon izin kami terapi dengan:*` — BUKAN `*Terapi:*`
 
 ### 7. Prinsip teks kontinu
 - S adalah narasi paragraf kontinu per item (bukan data terstruktur)
-- Lab ditulis dalam 1-3 baris dengan pipe separator
+- Lab ditulis tiap parameter baris baru (bukan pipe-separated `|`)
 - EKG 1 paragraf kontinu
 
 ---
