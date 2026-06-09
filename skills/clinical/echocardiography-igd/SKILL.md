@@ -42,31 +42,16 @@ IVC exp ___ | IVC insp ___ | BB ___ | TB ___
 
 **Aturan:** Jika pakboss lampirkan nomor 3 (Katup), artinya ada masalah katup — JANGAN tulis "Normal function and movement". Tulis sesuai yang pakboss sebutkan. Jika tidak disebut, jangan sematkan baris katup itu.
 
----
+**Parameter katup severe — referensi bila ada masalah katup (hanya yang disebut):**
 
-## Parameter Katup Severe
-
-Gunakan ini jika pakboss menyebutkan masalah katup di nomor 3. Hanya cantumkan parameter yang disebut.
-
-### Severe Mitral Regurgitation (MR)
-`Severe Functional Mitral Regurgitation (MR ERO ... cm², MR RV ... ml, MR VC ... cm, Regurgitant Jet Length > 50% LA, Carpentier ...) due to ... Annulus mitral ... cm`
-
-### Severe Mitral Stenosis (MS)
-`Severe Mitral Stenosis (MVA planimetry: ... cm², MVA by PHT: ... cm², MS Mean PG: ... mmHg, Mean PHT: ... ms, Wilkins Score: ...)`
-
-### Severe Aortic Regurgitation (AR)
-`Severe Aortic Regurgitation (AR PHT ... ms, AR ERO ... cm², AR RV ... ml, AR VC ... cm, Regurgitant Jet Length > 65% LVOT; Holodiastolic Reversal Flow Peak Velocity ... cm/s; Aortic root dimension: aortic annulus ... cm, sinus valsava ... cm, sinotubular junction ... cm, aortic ascenden ... cm)`
-
-### Severe Aortic Stenosis (AS)
-`Severe Aortic Stenosis (AVA planimetry ... cm², AV Vmax ... m/s, AV mean PG ... mmHg, AV continuity equation ... cm², SVI ... ml/m², AV VTI ... mmHg)`
-
-### Severe Tricuspid Regurgitation (TR)
-`Severe Tricuspid Regurgitation with [Central/Excentric] Jet (Regurgitant Jet Length Area > 35% of RA, TR Vmax ... m/s, TR maxPG ... mmHg, TR VC ... cm, Systolic Reversal Flow on Hepatic Vein is seen) with [Low/Intermediate/High] Probability of Pulmonary Hypertension`
-
-### Moderate-Severe Pulmonal Regurgitation (PR)
-`Moderate Pulmonal Regurgitation (PR PHT ... ms, Regurgitant Jet Width > 2/3 RVOT), PV AccT ... ms, PASP ... mmHg, mPAP ... mmHg`
-
----
+| Katup | Kondisi | Parameter |
+|-------|---------|-----------|
+| Mitral | Severe MR | MR ERO ... cm2, MR RV ... ml, MR VC ... cm, Regurgitant Jet Length > 50% LA, Carpentier ... Annulus mitral ... cm |
+| Mitral | Severe MS | MVA planimetry: ... cm2, MVA by PHT: ... cm2, MS Mean PG: ... mmHg, Mean PHT: ... ms, Wilkins Score: ... |
+| Aorta | Severe AR | AR PHT ... ms, AR ERO ... cm2, AR RV ... ml, AR VC ... cm, Regurgitant Jet Length > 65% LVOT; Holodiastolic Reversal Flow Peak Velocity ... cm/s; Aortic root: annulus ... cm, sinus valsava ... cm, sinotubular junction ... cm, ascenden ... cm |
+| Aorta | Severe AS | AVA planimetry ... cm2, AV Vmax ... m/s, AV mean PG ... mmHg, AV continuity equation ... cm2, SVI ... ml/m2, AV VTI ... mmHg |
+| Tricuspid | Severe TR | Severe TR with [Central/Excentric] Jet (Regurgitant Jet Area > 35% RA, TR Vmax ... m/s, TR maxPG ... mmHg, TR VC ... cm, Systolic Reversal Flow on Hepatic Vein) with [Low/Intermediate/High] Probability of PH |
+| Pulmonal | Mod-Sev PR | PR PHT ... ms, Regurgitant Jet Width > 2/3 RVOT, PV AccT ... ms, PASP ... mmHg, mPAP ... mmHg |
 
 ---
 
