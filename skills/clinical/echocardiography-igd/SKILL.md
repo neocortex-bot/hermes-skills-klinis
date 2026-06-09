@@ -26,32 +26,21 @@ Kirim nomor dan nilainya saja.
 
 ```
 Tanggal:
-1. LV func: ___ | EF TEICH ___% | EF Biplane ___%
-2. RV func: ___ | TAPSE ___ | S' Lat ___
-3. Mitral: ___ | Aorta: ___ | Pulmonal: ___ | Tricuspid: ___
-4. LVIDd ___ | LA ___ / ___ | RA ___ / ___ | RVDB ___ | LA/Ao ___
-5. LVH: ___ | LVMI ___ | RWT ___
+1. LV func: _ | EF TEICH _% | EF Biplane ___%
+2. RV func: _ | TAPSE _ | S' Lat ___
+3. Mitral: _ | Aorta: _ | Pulmonal: _ | Tricuspid: _
+4. LVIDd _ | LA _ / _ | RA _ / _ | RVDB _ | LA/Ao ___
+5. LVH: _ | LVMI _ | RWT ___
 6. RWMA: ___
-7. E/A ___ | E' Med ___ | E' Lat ___ | E/E' ___ | Grade ___
+7. E/A _ | E' Med _ | E' Lat _ | E/E' _ | Grade ___
 8. Perikard: ___
 9. Lain: ___
 
-TDS ___ | TDD ___ | HR ___ | LVOT Diam ___ | LVOT VTI ___
-IVC exp ___ | IVC insp ___ | BB ___ | TB ___
+TDS _ | TDD _ | HR _ | LVOT Diam _ | LVOT VTI ___
+IVC exp _ | IVC insp _ | BB _ | TB _
 ```
 
 **Aturan:** Jika pakboss lampirkan nomor 3 (Katup), artinya ada masalah katup — JANGAN tulis "Normal function and movement". Tulis sesuai yang pakboss sebutkan. Jika tidak disebut, jangan sematkan baris katup itu.
-
-**Parameter katup severe — referensi bila ada masalah katup (hanya yang disebut):**
-
-| Katup | Kondisi | Parameter |
-|-------|---------|-----------|
-| Mitral | Severe MR | MR ERO ... cm2, MR RV ... ml, MR VC ... cm, Regurgitant Jet Length > 50% LA, Carpentier ... Annulus mitral ... cm |
-| Mitral | Severe MS | MVA planimetry: ... cm2, MVA by PHT: ... cm2, MS Mean PG: ... mmHg, Mean PHT: ... ms, Wilkins Score: ... |
-| Aorta | Severe AR | AR PHT ... ms, AR ERO ... cm2, AR RV ... ml, AR VC ... cm, Regurgitant Jet Length > 65% LVOT; Holodiastolic Reversal Flow Peak Velocity ... cm/s; Aortic root: annulus ... cm, sinus valsava ... cm, sinotubular junction ... cm, ascenden ... cm |
-| Aorta | Severe AS | AVA planimetry ... cm2, AV Vmax ... m/s, AV mean PG ... mmHg, AV continuity equation ... cm2, SVI ... ml/m2, AV VTI ... mmHg |
-| Tricuspid | Severe TR | Severe TR with [Central/Excentric] Jet (Regurgitant Jet Area > 35% RA, TR Vmax ... m/s, TR maxPG ... mmHg, TR VC ... cm, Systolic Reversal Flow on Hepatic Vein) with [Low/Intermediate/High] Probability of PH |
-| Pulmonal | Mod-Sev PR | PR PHT ... ms, Regurgitant Jet Width > 2/3 RVOT, PV AccT ... ms, PASP ... mmHg, mPAP ... mmHg |
 
 ---
 
@@ -109,19 +98,6 @@ CPO: ... watt | CPI: ... watt/m2
 
 ---
 
-## Template Parameter Katup
-
-Hanya cantumkan katup yang disebutkan dan parameternya.
-
-**MR:** Mild MR / Moderate MR (MR ERO ... cm2, MR RV ... ml, MR VC ... cm, Jet ...% LA) / Severe MR (...)
-**MS:** MVA planimetry ... cm2, MVA by PHT ... cm2, MS Mean PG ... mmHg, Wilkins Score: ...
-**AR:** Mild/Moderate/Severe AR (AR PHT ... ms, AR ERO ... cm2, AR VC ... cm, Jet ...% LVOT)
-**AS:** AVA planimetry ... cm2, AV Vmax ... m/s, AV mean PG ... mmHg, SVI ... ml/m2
-**TR:** Mild/Moderate/Severe TR (TR Vmax ... m/s, TR maxPG ... mmHg, TR VC ... cm)
-**PR:** Mild/Moderate/Severe PR (PR PHT ... ms, Jet Width ...% RVOT), PV AccT ... ms
-
----
-
 ## Contoh Output Sesuai Data Riil
 
 **Contoh dari Kasus 01 — Tn. Irwan (STEMI Anterior):**
@@ -145,7 +121,7 @@ Hanya cantumkan katup yang disebutkan dan parameternya.
 
 Cardiac Valves:
 - Mitral: Trivial MR
-- Aorta: 3 cuspis, Normal function and movement
+- Aorta: 3 cuspis, Normal
 - Pulmonal: Mild PR (jet < 1/3 RVOT, PR PHT 399 ms, PV AccT 171 ms)
 - Tricuspid: Normal
 
@@ -177,10 +153,10 @@ python3 ~/.hermes/skills/clinical/echocardiography-igd/scripts/echo-calculator.p
   --date "08-05-2026" \
   --lv-func "Moderately Abnormal" --ef-teich 37.1 --ef-biplane 33.2 \
   --rv-func "Normal" --tapse 1.7 --s-lat 15.5 \
-  --aorta "3 cuspis, calcification (-), Normal Function and Movement" \
-  --mitral "Normal Function and Movement" \
-  --tricuspid "Normal Function and Movement" \
-  --pulmonal "Normal Function and Movement" \
+  --aorta "3 cuspis, calcification (-), Normal" \
+  --mitral "Normal" \
+  --tricuspid "Normal" \
+  --pulmonal "Normal" \
   --lvidd 6.71 --la-mayor 4.20 --la-minor 3.37 --ra-mayor 2.97 --ra-minor 2.40 --rvdb 2.84 \
   --lvh-type Eccentric --lvmi 166 --rwt 0.17 \
   --rwma "Akinetic Apicoanterior, Badal Mid Anteroseptal, Hypokinetic Basal Mid Anterolateral" \
