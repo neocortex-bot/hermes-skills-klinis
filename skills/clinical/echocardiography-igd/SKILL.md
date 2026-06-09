@@ -22,35 +22,51 @@ triggers:
 
 ## Form Isian Echo (Yang Perlu Diisi Pakboss)
 
-Kirim nomor dan nilainya saja. Contoh: `1. Mildly abnormal | 2. 42.6 / 41.7`
+Kirim nomor dan nilainya saja.
 
 ```
-1. LV Function: ___________ / EF TEICH ___% / EF Biplane ___%
-   (normal/mildly/moderately/severely abnormal)
+Tanggal:
+1. LV func: ___ | EF TEICH ___% | EF Biplane ___%
+2. RV func: ___ | TAPSE ___ | S' Lat ___
+3. Mitral: ___ | Aorta: ___ | Pulmonal: ___ | Tricuspid: ___
+4. LVIDd ___ | LA ___ / ___ | RA ___ / ___ | RVDB ___ | LA/Ao ___
+5. LVH: ___ | LVMI ___ | RWT ___
+6. RWMA: ___
+7. E/A ___ | E' Med ___ | E' Lat ___ | E/E' ___ | Grade ___
+8. Perikard: ___
+9. Lain: ___
 
-2. RV Function: ___________ / TAPSE ___ cm / S' Lat ___ cm/s
-   (normal/reduced)
-
-3. Katup:
-   Mitral: ___________
-   Aorta: ___________
-   Pulmonal: ___________
-   Tricuspid: ___________
-
-4. Dimensi: LVIDd ___ / LA Mayor ___ / LA minor ___ / RA Mayor ___ / RA minor ___ / RVDB ___ / LA/Ao ___
-
-5. LVH: ___________ / LVMI ___ g/m2 / RWT ___
-   (eccentric/concentric/normal)
-
-6. RWMA: ___________ (normokinetic / segmen hipokinetik/akinetik: ___________)
-
-7. Diastolik: E/A ___ / E' Med ___ / E' Lat ___ / E/E' ___ / Grade ___
-
-8. Efusi Perikard: ___________
-   (ada/tidak — jika ada: lokasi, estimasi)
-
-9. Lain: ___________ (LV SEC, thrombus, vegetasi, dll)
+TDS ___ | TDD ___ | HR ___ | LVOT Diam ___ | LVOT VTI ___
+IVC exp ___ | IVC insp ___ | BB ___ | TB ___
 ```
+
+**Aturan:** Jika pakboss lampirkan nomor 3 (Katup), artinya ada masalah katup — JANGAN tulis "Normal function and movement". Tulis sesuai yang pakboss sebutkan. Jika tidak disebut, jangan sematkan baris katup itu.
+
+---
+
+## Parameter Katup Severe
+
+Gunakan ini jika pakboss menyebutkan masalah katup di nomor 3. Hanya cantumkan parameter yang disebut.
+
+### Severe Mitral Regurgitation (MR)
+`Severe Functional Mitral Regurgitation (MR ERO ... cm², MR RV ... ml, MR VC ... cm, Regurgitant Jet Length > 50% LA, Carpentier ...) due to ... Annulus mitral ... cm`
+
+### Severe Mitral Stenosis (MS)
+`Severe Mitral Stenosis (MVA planimetry: ... cm², MVA by PHT: ... cm², MS Mean PG: ... mmHg, Mean PHT: ... ms, Wilkins Score: ...)`
+
+### Severe Aortic Regurgitation (AR)
+`Severe Aortic Regurgitation (AR PHT ... ms, AR ERO ... cm², AR RV ... ml, AR VC ... cm, Regurgitant Jet Length > 65% LVOT; Holodiastolic Reversal Flow Peak Velocity ... cm/s; Aortic root dimension: aortic annulus ... cm, sinus valsava ... cm, sinotubular junction ... cm, aortic ascenden ... cm)`
+
+### Severe Aortic Stenosis (AS)
+`Severe Aortic Stenosis (AVA planimetry ... cm², AV Vmax ... m/s, AV mean PG ... mmHg, AV continuity equation ... cm², SVI ... ml/m², AV VTI ... mmHg)`
+
+### Severe Tricuspid Regurgitation (TR)
+`Severe Tricuspid Regurgitation with [Central/Excentric] Jet (Regurgitant Jet Length Area > 35% of RA, TR Vmax ... m/s, TR maxPG ... mmHg, TR VC ... cm, Systolic Reversal Flow on Hepatic Vein is seen) with [Low/Intermediate/High] Probability of Pulmonary Hypertension`
+
+### Moderate-Severe Pulmonal Regurgitation (PR)
+`Moderate Pulmonal Regurgitation (PR PHT ... ms, Regurgitant Jet Width > 2/3 RVOT), PV AccT ... ms, PASP ... mmHg, mPAP ... mmHg`
+
+---
 
 ---
 
