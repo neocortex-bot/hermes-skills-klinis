@@ -26,6 +26,7 @@ triggers:
 | 8 | **LAB TIDAK DICANTUMKAN** (pakboss: "mana labnya tolol") | SELALU cantumkan `*Hasil Lab:*` meski kosong |
 | 9 | EKG cuma 1-2 kata: `SVT, HR 136` | Sequential lengkap: Rhythm, HR, axis, P, PR, QRS, ST, T, kesan |
 | 10 | Tidak pakai code block | SELALU bungkus SOAP di \`\`\` |
+| **11** | **Meninggalkan '...' (placeholder/ellipsis)** di output — pakboss harus hapus manual | **ISI LANGUNG atau HAPUS**. Lab yang belum keluar: tulis "Hasil lab menyusul" di baris pertama. Lab yang sudah keluar tapi kosong: tulis "[parameter]: —". JANGAN pernah meninggalkan "..." untuk diisi manual |
 
 ### ATURAN BOLD SEKALI LAGI:
 - 🟢 **PAKAI** `*...*`: lokasi pasien, nama pasien, EKG, Hasil Lab, Mohon izin assess, Mohon izin terapi, Plan
@@ -82,7 +83,7 @@ Template tersedia di `references/`:
 ## Pola Penting
 
 ### Diagnostik & Skoring
-- STEMI: sertakan onset, KILLIP, fibrinolytic success/failed, TIMI score
+- STEMI: sertakan onset, KILLIP, TIMI risk score, fibrinolytic success/failed
 - NSTEMI: sertakan GRACE score (risk %), ARC-HBR
 - Heart Failure: klasifikasi (HFrEF/HFmrEF/HFpEF), profil hemodinamik (wet/dry, warm/cold)
 - CKD/AKI: staging eGFR
@@ -136,20 +137,9 @@ Mata → Leher (JVP) → Thorax (Paru) → Jantung → Abdomen → Ekstremitas
    ☐ Rhythm, HR, regular/ireguler, axis, P wave, PR interval, QRS duration, ST segment, T wave, kesan
    ☐ Kesan ada di baris terakhir
    ☐ Jika ada EKG sebelum dan sesudah (IGD + CVCU) — tulis keduanya
-☐ Lab — WAJIB disertakan sebagai template kosong jika data belum ada (tiap parameter baris baru):
-   WBC: ...
-   Hb: ...
-   PLT: ...
-   Neut/Lymph: .../...
-   GDS: ...
-   PT/INR/APTT: ...
-   Na/K/Cl: ...
-   Ureum/Kreatinin: .../...
-   SGOT/SGPT: ...
-   Hs Troponin I: ...
-   (sesuaikan dengan layanan — selalu tuliskan lab yang belum diisi)
-☐ Foto Thorax — jika belum ada tulis "(menunggu hasil)"
-☐ Echocardiography — jika belum ada tulis kalau akan dilakukan
+☐ Lab — WAJIB disertakan. Jika data belum ada, tulis "*Hasil Lab:* Hasil lab menyusul" sebagai satu baris. JANGAN buat daftar parameter dengan "..." — tidak ada effort untuk pakboss hapus manual.
+☐ Foto Thorax — jika belum ada tulis "*(menunggu hasil)*"
+☐ Echocardiography — jika belum ada tulis "*Echocardiography:* Menyusul"
 ☐ Mohon izin kami assess dengan: — tiap diagnosis di baris bullet
 ☐ Mohon izin kami terapi dengan: — tiap obat di baris bullet
    ☐ Format: [Obat] [dosis]/[frekuensi]/[rute]
@@ -174,8 +164,7 @@ S:
 - [Narasi keluhan utama — onset, karakter, durasi, riwayat episode sebelumnya, gejala penyerta. Paragraf kontinu.]
 [Gejala lain jika ada]
 - Riwayat [penyakit] ada/tidak ada sejak ...
-- Riwayat [penyakit lain] ada/tidak ada ...
-- ... 
+- Riwayat [penyakit lain] ada/tidak ada 
 
 O:
 Tekanan Darah: ... mmHg
@@ -200,31 +189,19 @@ Ekstremitas: akral [hangat/dingin], edema [tidak ada/ada], CRT [<2/>2] detik
 Kesan: ... — polos
 
 *Hasil Lab [tanggal/lokasi]:*
-WBC: ...
-Hb: ...
-PLT: ...
-Neut/Lymph: .../...
-GDS: ...
-PT/INR/APTT: ...
-Na/K/Cl: ...
-Ureum/Kreatinin: .../...
-SGOT/SGPT: ...
-Hs Troponin I: ...
+Hasil lab menyusul
 
 *Mohon izin kami assess dengan:*
 - [Diagnosis 1]
 - [Diagnosis 2]
-- [...]
 
 *Mohon izin kami terapi dengan:*
-- [Obat] [dosis]/[frekuensi]/[rute] — [sudah diberikan / ...]
+- [Obat] [dosis]/[frekuensi]/[rute] — sudah diberikan
 - [Obat] [dosis]/[frekuensi]/[rute]
-- [...]
 
 *Plan:*
-- [...]
-- [...]
-- [...]
+- [Item plan 1]
+- [Item plan 2]
 
 Tabe dokter, mohon arahannya dokter, terima kasih dokter.
 ```
