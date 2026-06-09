@@ -29,6 +29,13 @@ Tanggal:
 1. LV func: _ | EF TEICH _% | EF Biplane ___%
 2. RV func: _ | TAPSE _ | S' Lat ___
 3. Mitral: _ | Aorta: _ | Pulmonal: _ | Tricuspid: _
+
+Masalah katup (jabarkan di sini):
+- Mitral: _ | MR ERO _ cm² | MR RV _ ml | MR VC _ cm | Regurg Jet Length > _% LA | Carpentier _ | Annulus mitral _ cm | MVA planimetry _ cm² | MVA PHT _ cm² | MS Mean PG _ mmHg | Mean PHT _ ms | Wilkins Score _
+- Aorta: _ | AR PHT _ ms | AR ERO _ cm² | AR RV _ ml | AR VC _ cm | Regurg Jet Length > _% LVOT | Holodiastolic Reversal Flow Peak Vel _ cm/s | Aortic annulus _ cm | Sinus valsava _ cm | ST junction _ cm | Ascenden _ cm | AVA planimetry _ cm² | AV Vmax _ m/s | AV mean PG _ mmHg | AV continuity eq _ cm² | SVI _ ml/m² | AV VTI _ cm
+- Pulmonal: _ | PR PHT _ ms | Regurg Jet Width > _/_ RVOT | PV AccT _ ms | PASP _ mmHg | mPAP _ mmHg
+- Tricuspid: _ | TR Jet [Central/Excentric] | Regurg Jet Area > _% RA | TR Vmax _ m/s | TR maxPG _ mmHg | TR VC _ cm | Systolic Reversal Flow Hepatic Vein [Ya/Tidak] | PH Probability [Low/Intermediate/High]
+
 4. LVIDd _ | LA _ / _ | RA _ / _ | RVDB _ | LA/Ao ___
 5. LVH: _ | LVMI _ | RWT ___
 6. RWMA: ___
