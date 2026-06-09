@@ -95,13 +95,13 @@ BB: [x] kg | TB: [x] cm
   - Henti jantung: [ya/tidak]
 
 Pemeriksaan Fisik
-- Mata: konjungtiva pucat [-/+], sklera ikterik [-/+]
-- Leher: JVP R+[x] cmH2O, [cannon A wave: ada/tidak]
-  - Neck vessel pulsation (frog sign): [terlihat/tidak]
-- Thorax: BP vesikuler, ronkhi [-/+] [lokasi], wheezing [-/+]
-- Jantung: BJ I/II [murni/muffled], [reguler/ireguler], murmur [-/+] [grade, lokasi, karakter], gallop [-/+], [bising kontinu — WPW?]
-- Abdomen: [datar/cembung], supel, hepar/lien teraba/tidak, nyeri tekan [-/+]
-- Ekstremitas: edema [-/+], akral [hangat/dingin], CRT [<2/>2] detik, pulsasi perifer [teraba baik/lemah]
+Mata: konjungtiva pucat tidak ada / ada, sklera ikterik tidak ada / ada
+Leher: JVP (tidak disebutkan / R+... cmH2O), cannon A wave (tidak ada / ada)
+  Neck vessel pulsation (frog sign): (tidak terlihat / terlihat)
+Thorax: BP vesikuler, ronkhi (tidak ada / ada) [lokasi], wheezing (tidak ada / ada)
+Jantung: BJ I/II murni / muffled, reguler / ireguler, murmur (tidak ada / ada) [grade, lokasi, karakter], gallop (tidak ada / ada), bising kontinu (tidak ada / ada)
+Abdomen: datar / cembung, supel / tegang, hepar/lien (tidak teraba / teraba), nyeri tekan (tidak ada / ada)
+Ekstremitas: edema (tidak ada / ada), akral hangat / dingin, CRT <2 / >2 detik, pulsasi perifer teraba baik / lemah
 
 *EKG [saat episode takikardia] ([lokasi], [tanggal]):*
 [Jika tersedia — analisis sistematis:]
