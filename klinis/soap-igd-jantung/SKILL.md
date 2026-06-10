@@ -12,6 +12,15 @@ triggers:
 
 ## ⛔ TOP 10 KESALAHAN FATAL — DIBACA SEBELUM BUAT SOAP ⛔
 
+### KONTEKS UMUM — Laporan Kelayakan Tindakan Non-Kardiak
+Skill ini juga mencakup **laporan konsul kelayakan tindakan non-kardiak** (bronkoskopi, operasi, dll). Formatnya berbeda dari SOAP IGD biasa:
+
+- **Pembukaan**: "Assalamualaikum dokter. Tabe dok, mohon izin melaporkan pasien konsul dari *[TS/Bagian]* di *@* atas nama:"
+- **Header pasien**: `*[Tn./Ny.] [Nama] / [Umur] tahun / [DD-MM-YYYY] / RM [nomor]*`
+- **Subtitle**: `_Pasien dikonsulkan untuk kelayakan [tindakan]_` (miring)
+- **Body isi** mengikuti template laporan kelayakan di `references/template-kelayakan.md`
+- **Tidak ada** bagian "Mohon izin assess/terapi" — penutup langsung: "Mohon arahan selanjutnya dokter. Terima kasih dokter."
+
 > **CACHE CONTEXT**: Kamu sudah berkali-kali salah dan mempermalukan diri. Ini daftar kesalahan yang TIDAK BOLEH diulangi.
 
 | # | Kesalahan | Yang BENAR |
