@@ -1,22 +1,17 @@
-#!/usr/bin/env bash
-# sync-to-repo.sh — Sync skills dari ~/.hermes/skills/ ke repo + auto commit & push
+#!/bin/bash
+# Sync clinical skills from ~/.hermes/skills/clinical/ to the repo
+# This script copies the skills and prepares them for git commit
 
-set -e
-REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
-HERMES_SKILLS="$HOME/.hermes/skills/clinical"
+REPO_DIR="/tmp/hermes-skills-klinis"
+SKILLS_SRC="$HOME/.hermes/skills"
 
-echo "Sync Hermes skills → repo..."
-cp "$HERMES_SKILLS/soap-igd-jantung/SKILL.md" "$REPO_DIR/skills/clinical/soap-igd-jantung/"
-cp -r "$HERMES_SKILLS/soap-igd-jantung/references/"* "$REPO_DIR/skills/clinical/soap-igd-jantung/references/" 2>/dev/null
-cp "$HERMES_SKILLS/echocardiography-igd/SKILL.md" "$REPO_DIR/skills/clinical/echocardiography-igd/"
-cp -r "$HERMES_SKILLS/echocardiography-igd/scripts/"* "$REPO_DIR/skills/clinical/echocardiography-igd/scripts/" 2>/dev/null
+# Copy skills-klinis structure
+mkdir -p "$REPO_DIR/klinis"
+rsync -a --delete "$SKILLS_SRC/clinical/" "$REPO_DIR/klinis/" 2>/dev/null || true
 
-cd "$REPO_DIR"
-git add -A
-if ! git diff --cached --quiet; then
-    git commit -m "auto-sync $(TZ=Asia/Makassar date '+%Y-%m-%d %H:%M')"
-    git push
-    echo "Committed & pushed"
+# Check if there are existing klinis dirs to merge
+if [ -d "$SKILLS_SRC/clinical" ]; then
+    echo "Synced clinical skills from $SKILLS_SRC/clinical"
 else
-    echo "No changes"
+    echo "No clinical skills dir found at $SKILLS_SRC/clinical"
 fi
