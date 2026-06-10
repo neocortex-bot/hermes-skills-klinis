@@ -190,8 +190,17 @@ Jantung: BJ I/II [murni/...], [reguler/ireguler], murmur [tidak ada/ada]
 Abdomen: [datar/cembung], [supel/tegang], hepar/lien [tidak teraba/teraba], nyeri tekan [tidak ada/ada]
 Ekstremitas: akral [hangat/dingin], edema [tidak ada/ada], CRT [<2/>2] detik
 
-*EKG [lokasi] [tanggal]*
-[Bacaan EKG sequential — 1 paragraf polos]
+*EKG [lokasi] ([tanggal]):*
+[1 baris sequential, parameter dipisah koma — jangan per baris]
+Sinus Rhythm, HR [x] bpm, reguler, Normoaxis, P wave [x] sec, PR interval [x] sec, QRS Duration [x] sec, No ST-T changes
+
+⚠️ ATURAN EKG:
+- **EKG NORMAL**: tulis 1 baris sequential seperti contoh di atas (pakai koma, bukan baris baru)
+- **EKG ABNORMAL**: tunggu/clue dari Pakboss — baru tulis lengkap dan panjang
+- JANGAN pakai asumsi sendiri. Kalau ragu, tanya Pakboss dulu
+- Contoh EKG abnormal (dari Pakboss): "Sinus Rhythm HR 53 bpm, regular, normoaksis, P wave 0,06 sec, PR Interval 0,16 sec, QRS Duration 0,10 sec, Q Path II,III,aVF, V1-V4, T inverted V1-V2. VES Bigeminy"
+- Contoh AF (dari Pakboss): "Supraventricular Rhythm, HR 110 bpm avg, iregularly iregular, Normoaxis, P wave fibrilatory, QRS Duration 0,08 sec, No Specific ST-T changes"
+  ✅ ATURAN: AF → irama = **Supraventricular Rhythm** (bukan Atrial Fibrillation)
 
 *EKG [lokasi lanjutan] [tanggal]* — jika ada
 [Bacaan EKG kedua — polos]
