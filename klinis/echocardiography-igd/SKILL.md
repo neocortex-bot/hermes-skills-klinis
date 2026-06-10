@@ -31,14 +31,7 @@ Tanggal:
 1. LV func: _ | EF TEICH _% | EF Biplane ___%
 2. RV func: _ | TAPSE _ | S' Lat ___
 3. Mitral: _ | Aorta: _ | Pulmonal: _ | Tricuspid: _
-
-Masalah katup (jabarkan di sini):
-- Mitral: _ | MR ERO _ cm² | MR RV _ ml | MR VC _ cm | Regurg Jet Length > _% LA | Carpentier _ | Annulus mitral _ cm | MVA planimetry _ cm² | MVA PHT _ cm² | MS Mean PG _ mmHg | Mean PHT _ ms | Wilkins Score _
-- Aorta: _ | AR PHT _ ms | AR ERO _ cm² | AR RV _ ml | AR VC _ cm | Regurg Jet Length > _% LVOT | Holodiastolic Reversal Flow Peak Vel _ cm/s | Aortic annulus _ cm | Sinus valsava _ cm | ST junction _ cm | Ascenden _ cm | AVA planimetry _ cm² | AV Vmax _ m/s | AV mean PG _ mmHg | AV continuity eq _ cm² | SVI _ ml/m² | AV VTI _ cm
-- Pulmonal: _ | PR PHT _ ms | Regurg Jet Width > _/_ RVOT | PV AccT _ ms | PASP _ mmHg | mPAP _ mmHg | PV Vmax _ m/s | PV mean PG _ mmHg | PV VTI _ cm
-- Tricuspid: _ | TR Jet [Central/Excentric] | Regurg Jet Area > _% RA | TR Vmax _ m/s | TR maxPG _ mmHg | TR VC _ cm | Systolic Reversal Flow Hepatic Vein [Ya/Tidak] | PH Probability [Low/Intermediate/High]
-
-4. LVIDd _ | LA _ / _ | RA _ / _ | RVDB _ | LA/Ao ___
+4. LVIDd _ | LA _ / _ | RA area _ | RVDB _ | LA/Ao ___
 5. LVH: _ | LVMI _ | RWT ___
 6. RWMA: ___
 7. E/A _ | E' Med _ | E' Lat _ | E/E' _ | Grade ___
@@ -47,6 +40,25 @@ Masalah katup (jabarkan di sini):
 
 TDS _ | TDD _ | HR _ | LVOT Diam _ | LVOT VTI ___
 IVC exp _ | IVC insp _ | BB _ | TB _
+
+LUS (isi jika ada temuan, kosongkan jika normal):
+B line: _ | lokasi: _
+Pleural effusion: _ cm | lokasi: _
+
+Masalah katup (jabarkan di sini):
+- Mitral:
+_ | MR ERO _ cm² | MR RV _ ml | MR VC _ cm | Regurg Jet Length > _% LA | Carpentier _ | Annulus mitral _ cm |
+MVA planimetry _ cm² | MVA PHT _ cm² | MS Mean PG _ mmHg | Mean PHT _ ms | Wilkins Score _
+
+- Aorta:
+_ | AR PHT _ ms | AR ERO _ cm² | AR RV _ ml | AR VC _ cm | Regurg Jet Length > _% LVOT | Holodiastolic Reversal Flow Peak Vel _ cm/s | Aortic annulus _ cm | Sinus valsava _ cm | ST junction _ cm | Ascenden _ cm |
+AVA planimetry _ cm² | AV Vmax _ m/s | AV mean PG _ mmHg | AV continuity eq _ cm² | SVI _ ml/m² | AV VTI _ cm
+
+- Pulmonal:
+_ | PR PHT _ ms | Regurg Jet Width > _/_ RVOT | PV AccT _ ms | PASP _ mmHg | mPAP _ mmHg
+
+- Tricuspid:
+_ | TR Jet [Central/Excentric] | Regurg Jet Area > _% RA | TR Vmax _ m/s | TR maxPG _ mmHg | TR VC _ cm | Systolic Reversal Flow Hepatic Vein [Ya/Tidak] | PH Probability [Low/Intermediate/High]
 ```
 
 **Aturan Katup:**
@@ -102,10 +114,10 @@ eRAP: ... mmHg (exp/insp)
 
 ## LUS (Lung Ultrasound) — WAJIB selalu dicantumkan
 
-**Prinsip:** LUS selalu ada di laporan echo, sebelum Echo Hemodinamik.
+**Prinsip:** LUS selalu ada di laporan echo, **di bawah Echo Hemodinamik** (bukan di antara Bedside dan Hemodinamik).
 - Jika pakboss **tidak menyebut** B line / efusi pleura → artinya normal: A line (+), B line (-), pleural effusion (-)
 - Jika pakboss sebut "efusi 2 cm", "B line +" dll → tulis sesuai
-- Lungs sliding biasanya (+), pleural line irregular jika ada inflamasi
+- Lung sliding biasanya (+), pleural line irregular jika ada inflamasi
 
 **Format selalu:**
 ```
@@ -134,6 +146,9 @@ BSA ... m²
 CI ... L/min/m²
 CPO ... watt
 CPI ... watt/m²
+
+Lung US:
+Lung sliding (+), pleural line irregular, A line (+), B line (-), pleural effusion (-)
 ```
 
 **Aturan format:**
@@ -176,9 +191,6 @@ eRAP: 8 mmHg (1.1/0.9 cm)
 Grade I LV Diastolic Dysfunction (E/A 0.86, E' Med 11 cm/s, E' Lat 8 cm/s)
 No pericardial effusion
 
-Lung US:
-Lung sliding (+), pleural line irregular, A line (+), B line (-), pleural effusion (-)
-
 *Echo Hemodinamik:*
 TD 145/90 mmHg
 MAP 108 mmHg
@@ -193,6 +205,9 @@ BSA 1.87 m²
 CI 2.35 L/min/m²
 CPO 1.06 watt
 CPI 0.57 watt/m²
+
+Lung US:
+Lung sliding (+), pleural line irregular, A line (+), B line (-), pleural effusion (-)
 ```
 
 ---
