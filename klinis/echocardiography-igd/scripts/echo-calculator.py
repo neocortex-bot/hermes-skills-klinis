@@ -60,7 +60,7 @@ def calculate(tds=None, tdd=None, hr=None, lvot_diam=None, lvot_vti=None,
     if rv_func:
         line = f"- {rv_func} RV systolic function"
         if tapse is not None:
-            line += f", TAPSE {tapse} cm/s"
+            line += f", TAPSE {tapse} cm"
         if s_lat is not None:
             line += f", S' lateral {s_lat} cm/s"
         lines.append(line)
