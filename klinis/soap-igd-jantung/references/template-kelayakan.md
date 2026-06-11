@@ -14,16 +14,14 @@ Assalamualaikum dokter. Tabe dok, mohon izin melaporkan pasien konsul dari *[TS/
 _Pasien dikonsulkan untuk kelayakan [tindakan]_
 
 *S:*
-Saat ini memiliki keluhan berupa sesak nafas [ada/tidak ada], riwayat sesak nafas [ada/tidak ada]
-Nyeri dada [ada/tidak ada], riwayat nyeri dada sebelumnya [ada/tidak ada]. 
-Berdebar-debar [ada/tidak ada], riwayat berdebar-debar [ada/tidak ada]. 
+Saat ini pasien mengeluhkan [keluhan utama — jabarkan onset, karakter, durasi]. Keluhan lain seperti sesak nafas tidak ada, riwayat sesak nafas sebelumnya tidak ada. Nyeri dada tidak ada, riwayat nyeri dada sebelumnya tidak ada. Berdebar-debar tidak ada, riwayat berdebar-debar tidak ada.
 
 Pasien masuk RS dengan [diagnosis utama]
 
 Riwayat hipertensi [ada/tidak ada]
 Riwayat diabetes [ada/tidak ada]
 Riwayat merokok [ada/tidak ada — jika ada sebutkan berapa bungkus/hari x tahun]
-Riwayat penyakit jantung dalam keluarga [ada/tidak ada] 
+Riwayat penyakit jantung dalam keluarga [ada/tidak ada]
 
 Riwayat jantung berobat rutin di [poli/tempat] — jika ada
 
@@ -35,11 +33,12 @@ Nafas : ... x/menit
 Suhu : ... °C
 SpO2 : ...% [RA / on NC ... lpm]
 
-Anemis [tidak ada/ada], ikterus [tidak ada/ada]
-JVP [R+... cmH2O / tidak disebutkan]
-BJ I/II murni reguler, murmur [tidak ada/ada]
-BP Vesikuler, ronkhi [tidak ada/ada], wheezing [tidak ada/ada]
-Edema ekstremitas inferior [tidak ada/ada], akral teraba [hangat/dingin]
+Mata: konjungtiva tidak anemis, sklera tidak ikterik
+Leher: JVP R+2 cmH2O dalam batas normal
+Thorax: BP vesikuler, ronkhi tidak ada, wheezing tidak ada
+Jantung: BJ I/II murni reguler, murmur tidak ada
+Abdomen: datar, supel, hepar dan lien tidak teraba, nyeri tekan tidak ada
+Ekstremitas: akral teraba hangat, edema tidak ada, CRT < 2 detik
 
 *EKG [DD-MM-YYYY]*
 [Bacaan EKG lengkap: Rhythm, HR, regular/ireguler, axis, P wave, PR interval, QRS complex, ST segment, T wave — 1 paragraf polos]
@@ -77,18 +76,23 @@ Mohon arahan selanjutnya dokter. Terima kasih dokter.
 ## Aturan Khusus Laporan Kelayakan
 
 1. **TTV**: isi dengan nilai riil. SpO2 cantumkan setelah Suhu di baris terpisah
-2. **EKG**: 
+2. **Fisis**: **SEMUA yang tidak disebutkan tetap ditulis sebagai normal**. Jangan pernah tulis "tidak disebutkan". Gunakan format baku di atas (Mata, Leher, Thorax, Jantung, Abdomen, Ekstremitas) dengan nilai default normal kecuali pakboss memberikan data spesifik.
+3. **Anamnesis (S)**: **Selalu deskripsikan keluhan dengan narasi lengkap** — jangan hanya "keluhan utama disebutkan". Jabarkan onset, karakter, durasi. Gejala yang tidak disebutkan tetap ditulis naratif: "Nyeri dada tidak ada, riwayat nyeri dada sebelumnya tidak ada. Berdebar-debar tidak ada..." — jangan pernah pakai placeholder `[ada/tidak ada]`.
+4. **EKG**: 
    - Jika pasien memberi hint "normal EKG saja" atau "tulis normal", tulis: `Sinus rhythm, Normal ECG`
    - Jika ada deskripsi lengkap, tulis lengkap dengan tanggal
-3. **Laboratorium**: 
+   - **Jika belum ada data EKG: tulis deskripsi EKG normal lengkap (jangan tulis "Belum ada data EKG")** — perkiraan HR sesuai nadi pasien
+5. **Laboratorium**: 
    - TANPA nilai normal dalam kurung
    - Tulis tanggal setelah heading: `*Laboratorium DD-MM-YYYY:*`
-   - Parameter menyusul / tidak ada: tulis —
-4. **Foto thorax**: jika belum ada hasil, tulis `_menunggu hasil_`
-5. **Echocardiography**: isi bullet points sesuai data echo yang diberikan
-6. **Lee RCRI**: tulis risk level + estimated risk % dari referensi
-7. **Penutup**: "Mohon arahan selanjutnya dokter. Terima kasih dokter." — BUKAN "Tabe dokter, mohon arahannya dokter"
-8. **SELALU** bungkus di code block ``` agar aman dicopy ke WA
+   - Parameter yang tidak ada: tulis —
+   - **Jika belum ada data lab sama sekali**, jangan tinggalkan ellipsis/placeholder. Tulis: `*Laboratorium:*` di baris pertama lalu `Hasil laboratorium menyusul` di baris berikutnya
+   - Kalaupun ada sebagian lab, tulis semua parameter yang ada tanpa meninggalkan "..." yang harus dihapus manual
+6. **Foto thorax**: jika belum ada hasil, tulis `_menunggu hasil_`
+7. **Echocardiography**: isi bullet points sesuai data echo yang diberikan. Jika belum ada: tulis `*Echocardiography:*` lalu `Belum ada data Echocardiography`
+8. **Lee RCRI**: tulis risk level + estimated risk % dari referensi
+9. **Penutup**: "Mohon arahan selanjutnya dokter. Terima kasih dokter." — BUKAN "Tabe dokter, mohon arahannya dokter"
+10. **SELALU** bungkus di code block ``` agar aman dicopy ke WA
 
 ## Contoh Kasus Terbaru (Ny. ST Subaedah — Kelayakan Bronkoskopi)
 
