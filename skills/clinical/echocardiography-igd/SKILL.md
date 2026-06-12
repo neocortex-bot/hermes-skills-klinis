@@ -11,6 +11,8 @@ triggers:
 
 ## Prinsip
 - **Hanya parameter yang diisi** — bila pakboss kirim data echo, hanya parameter yang disebutkan/diisi yang dicantumkan. Jika cuma "Mild MR" ya tulis Mild MR saja, jangan tambahkan parameter lain.
+- **JANGAN pakai pipe `|`** di output laporan.
+- **Interpretasi sendiri** — jangan copas mentah dari data pakboss. Contoh: LVIDd 3.9 cm itu normal → tulis "Normal Cardiac Dimensions". LA 4.3 cm itu dilatasi → tulis "LA dilatation". Dll.
 - **Yang tidak perlu diisi pakboss** (kalkulasi otomatis dari app hemodinamik atau dari TTV):
   - MAP, LV SV, LV CO, eRAP, SVR, BSA, CI, CPO, CPI, Collapsibility Index, Distensibility Index
   - TDS, TDD, HR, Suhu — dari monitor TTV
@@ -29,14 +31,7 @@ Tanggal:
 1. LV func: _ | EF TEICH _% | EF Biplane ___%
 2. RV func: _ | TAPSE _ | S' Lat ___
 3. Mitral: _ | Aorta: _ | Pulmonal: _ | Tricuspid: _
-
-Masalah katup (jabarkan di sini):
-- Mitral: _ | MR ERO _ cm² | MR RV _ ml | MR VC _ cm | Regurg Jet Length > _% LA | Carpentier _ | Annulus mitral _ cm | MVA planimetry _ cm² | MVA PHT _ cm² | MS Mean PG _ mmHg | Mean PHT _ ms | Wilkins Score _
-- Aorta: _ | AR PHT _ ms | AR ERO _ cm² | AR RV _ ml | AR VC _ cm | Regurg Jet Length > _% LVOT | Holodiastolic Reversal Flow Peak Vel _ cm/s | Aortic annulus _ cm | Sinus valsava _ cm | ST junction _ cm | Ascenden _ cm | AVA planimetry _ cm² | AV Vmax _ m/s | AV mean PG _ mmHg | AV continuity eq _ cm² | SVI _ ml/m² | AV VTI _ cm
-- Pulmonal: _ | PR PHT _ ms | Regurg Jet Width > _/_ RVOT | PV AccT _ ms | PASP _ mmHg | mPAP _ mmHg | PV Vmax _ m/s | PV mean PG _ mmHg | PV VTI _ cm
-- Tricuspid: _ | TR Jet [Central/Excentric] | Regurg Jet Area > _% RA | TR Vmax _ m/s | TR maxPG _ mmHg | TR VC _ cm | Systolic Reversal Flow Hepatic Vein [Ya/Tidak] | PH Probability [Low/Intermediate/High]
-
-4. LVIDd _ | LA _ / _ | RA _ / _ | RVDB _ | LA/Ao ___
+4. LVIDd _ | LA _ / _ | RA area _ | RVDB _ | LA/Ao ___
 5. LVH: _ | LVMI _ | RWT ___
 6. RWMA: ___
 7. E/A _ | E' Med _ | E' Lat _ | E/E' _ | Grade ___
@@ -45,131 +40,221 @@ Masalah katup (jabarkan di sini):
 
 TDS _ | TDD _ | HR _ | LVOT Diam _ | LVOT VTI ___
 IVC exp _ | IVC insp _ | BB _ | TB _
+
+LUS (isi jika ada temuan, kosongkan jika normal):
+B line: _ | lokasi: _
+Pleural effusion: _ cm | lokasi: _
+
+Masalah katup (jabarkan di sini):
+- Mitral:
+_ | MR ERO _ cm² | MR RV _ ml | MR VC _ cm | Regurg Jet Length > _% LA | Carpentier _ | Annulus mitral _ cm |
+MVA planimetry _ cm² | MVA PHT _ cm² | MS Mean PG _ mmHg | Mean PHT _ ms | Wilkins Score _
+
+- Aorta:
+_ | AR PHT _ ms | AR ERO _ cm² | AR RV _ ml | AR VC _ cm | Regurg Jet Length > _% LVOT | Holodiastolic Reversal Flow Peak Vel _ cm/s | Aortic annulus _ cm | Sinus valsava _ cm | ST junction _ cm | Ascenden _ cm |
+AVA planimetry _ cm² | AV Vmax _ m/s | AV mean PG _ mmHg | AV continuity eq _ cm² | SVI _ ml/m² | AV VTI _ cm
+
+- Pulmonal:
+_ | PR PHT _ ms | Regurg Jet Width > _/_ RVOT | PV AccT _ ms | PASP _ mmHg | mPAP _ mmHg
+
+- Tricuspid:
+_ | TR Jet [Central/Excentric] | Regurg Jet Area > _% RA | TR Vmax _ m/s | TR maxPG _ mmHg | TR VC _ cm | Systolic Reversal Flow Hepatic Vein [Ya/Tidak] | PH Probability [Low/Intermediate/High]
 ```
 
-**Aturan:** Jika pakboss lampirkan nomor 3 (Katup), artinya ada masalah katup — JANGAN tulis "Normal function and movement". Tulis sesuai yang pakboss sebutkan. Jika tidak disebut, jangan sematkan baris katup itu.
+**Aturan Katup:**
+- Jika pakboss tulis "N" (Normal) atau tidak disebut masalah — tulis **"Normal function and movement"** untuk Mitral, Pulmonal, Tricuspid.
+- Untuk **Aorta** — selalu tulis **"3 cuspis, calcification (-), Normal function and movement"** kecuali pakboss sebut ada abnormality (stenosis/regurg/kalsifikasi).
+- Jika pakboss sebut ada abnormality (Mild MR, Moderate AS, dll) — tulis sesuai yang pakboss sebutkan, jangan "Normal function and movement".
+- Jika katup tidak disebut sama sekali, jangan sematkan baris katup itu.
+
+**Aturan Pelebaran Katup (WAJIB):**
+Saat pakboss menyebut grade katup (Mild/Moderate/Severe MR/AR/PR/TR), jabarkan dengan parameter berikut. Jangan tulis cuma "Mild PR" saja — harus diperluas dengan template di bawah:
+
+| Katup | Jika pakboss sebut | Format output yang dijabarkan |
+|-------|-------------------|-------------------------------|
+| Tricuspid | Mild/Moderate/Severe TR | `Severe TR (Vmax ... m/s, MaxPG ... mmHg), PH Probability [Low/Intermediate/High]` |
+| Pulmonal | Mild/Moderate PR | `Mild Pulmonary Regurgitation (PR Regurgitant Jet < 1/3 RVOT)` — untuk Mild. `Moderate Pulmonary Regurgitation (Regurg Jet Width > 1/3 RVOT)` — untuk Moderate. Jika ada MPA dilatasi, tambahkan koma lalu `MPA Dilatation (... cm)`. |
+| Mitral | MR | `[Grade] MR (ERO ... cm², RV ... ml, VC ... cm)` — jika ERO/RV/VC tidak disebut, tulis sesuai grade saja |
+| Aorta | AR | `[Grade] AR` — jika PHT disebut: `[Grade] AR (PHT ... ms)` |
+| Mitral | MS | `MS (MVA planimetry ... cm², MVA PHT ... cm², Mean PG ... mmHg, Wilkins Score ...)` |
+| Aorta | AS | `AS (AV Vmax ... m/s, mean PG ... mmHg, AVA continuity eq ... cm²)` |
+
+**Pengecualian:** Jika pakboss hanya kirim grade tanpa angka parameter, tulis grade + jelaskan dari parameter yang ada saja.
+
+**Aturan TR + PH Probability:**
+- TR Mild → tulis `Mild TR` saja
+- TR Moderate → tulis `Moderate TR (Vmax ... m/s, MaxPG ... mmHg)` — cantumkan Vmax/MaxPG jika ada
+- TR Severe → tulis `Severe TR` + selalu jabarkan `(Vmax ... m/s, MaxPG ... mmHg)` jika ada datanya + `PH Probability [Low/Intermediate/High]`
+- PH Probability:
+  - TR Vmax ≤ 2.8 + tanda RV overload lain (D-shaped LV, RV dilatasi, RA dilatasi, RVOT AccT < 105ms) → "Intermediate Probability of PH"
+  - TR Vmax > 2.8 → lihat tanda RV overload: jika ada tanda RV overload → "High Probability of PH"; jika tanpa tanda → "Intermediate Probability of PH"
+  - TR Vmax > 3.4 → langsung "High Probability of PH"
+
+**Aturan TAPSE:**
+- TAPSE ≥ 1.7 cm → "Normal RV systolic function"
+- TAPSE 1.5-1.6 cm → "Borderline RV systolic function"
+- TAPSE < 1.5 cm → "RV Systolic Dysfunction"
 
 ---
 
-## Template Output Echo Bedside
+## Interpretasi Parameter Echo
 
-Format untuk dimasukkan ke SOAP IGD:
+### Dimensi Jantung (interpretasi otomatis)
+- LVIDd normal: 3.5-5.7 cm (wanita), 3.9-5.3 cm (pria) → tulis "Normal Cardiac Dimensions" jika dalam rentang.
+- LA mayor normal: < 4.0 cm → jika ≥ 4.0 tulis "LA dilatation".
+- RA area normal: < 18 cm² → jika ≥ 18 tulis "RA dilatation".
+- RVDB normal: < 4.2 cm → jika ≥ 4.2 tulis "RV dilatation".
+- Jika semua dimensi dalam batas normal: **"Normal Cardiac Dimensions (parameter...)"**
+
+### LV Geometry
+- RWT > 0.42 + LVMI normal → "Concentric remodeling"
+- RWT ≤ 0.42 + LVMI ↑ → "Eccentric LVH"
+- RWT > 0.42 + LVMI ↑ → "Concentric LVH"
+- RWT normal + LVMI normal → skip baris
+
+### LV Diastolic Function — dengan Grade
+- Grade I: "Grade I LV Diastolic Dysfunction:" lalu E/A, E' Med, E' Lat
+- Grade II/III: sesuai
+
+### eRAP
+- "eRAP: ... mmHg (IVC exp/IVC insp)"
+- Interpretasi: IVC < 2.1 cm + collapse > 50% → eRAP 3 mmHg (normal); < 2.1 + < 50% → 8 mmHg; ≥ 2.1 + > 50% → 8 mmHg; ≥ 2.1 + < 50% → 15 mmHg
+
+---
+
+## Template Output Echo Bedside — FORMAT PASTI
+
+**Aturan struktur output (WAJIB):**
+1. **Pulmonary Hypertension** — section header jika ada PH (TR Severe + PASP ↑ atau tanda RV overload)
+2. **Trombus/temuan lain** — baris sendiri
+3. **LV & RV function** — bullet `- [temuan]`
+4. **Cardiac Valves** — section dengan sub-bullet
+5. **Dimensi + Geometri jadi SATU baris** — tulis `RA dilatation, RV dilatation with LV-D shaped (RA area ... cm², RVDB ... cm, LA mayor ... cm, LA minor ... cm, LVMI ... g/m², RWT ...)` — jangan pisah dimensi dan geometri
+6. **No pericardial effusion** — baris sendiri
 
 ```
 *Echocardiography Bedside (tanggal):*
-- [temuan LV Function], EF ...% (TEICH), EF ...% (BIPLANE)
-- [temuan RV Function], TAPSE ... cm, S' lateral ... cm/s
+
+- Pulmonary Hypertension
+
+- Trombus seen at [lokasi] (ukuran)
+
+- Normal LV Systolic Function, EF ...% (TEICH)
+
+- Normal RV systolic function, TAPSE ... cm, Mc Connel sign [-/+]
 
 Cardiac Valves:
-- Mitral: ...
-- Aorta: ...
+- Mitral: Normal function and movement
+- Aorta: 3 cuspis, calcification (-), Normal function and movement
 - Pulmonal: ...
 - Tricuspid: ...
 
-Cardiac Dimensions:
-... (LVIDd ... cm, LA Mayor ... cm, LA minor ... cm, RA Mayor ... cm, RA minor ... cm, RVDB ... cm, LA/Ao: ...)
-
-LV Geometry:
-[Eccentric/Concentric] LVH (LVMI ... g/m2, RWT ...)
-
-Regional Wall Motion:
-[Global Normokinetic / Akinetic/Hypokinetic ...]
-
-eRAP: ... mmHg (IVC exp ... cm, IVC insp ... cm)
-[Ini dari app hemodinamik — diisi otomatis]
-
-LV Diastolic Function:
-E/A ..., E' Med ... cm/s, E' Lat ... cm/s, E/E' ..., Grade ...
-
-Pericardial Effusion: [ada/tidak]
-
-[Parameter lain jika ada]
-```
-
----
-
-## Template Echo Hemodinamik
-
-Diisi otomatis dari app hemodinamik + input pakboss (LVOT Diam, LVOT VTI, IVC). Tidak perlu diisi manual, tinggal copy dari app.
-
-```
-Echo Hemodinamik:
-TD: .../... mmHg | MAP: ... mmHg | HR: ... bpm
-LVOT Diam: ... cm | LVOT VTI: ... cm
-LVSV: ... ml | LVCO: ... L/min
-eRAP: ... mmHg (IVC exp ... cm, IVC insp ... cm)
-SVR: ... dynes/sec/cm-5
-BSA: ... m2 | CI: ... L/min/m2
-CPO: ... watt | CPI: ... watt/m2
-```
-
----
-
-## Contoh Output Sesuai Data Riil
-
-**Contoh dari Kasus 01 — Tn. Irwan (STEMI Anterior):**
-
-*Kalau pakboss isi:*
-1. Mildly abnormal | 42.6 / 41.7
-2. Normal / 2.1 / 12.1
-3. Mitral: Trivial MR | Aorta: Normal | Pulmonal: Mild PR | Tricuspid: Normal
-4. 5.8 / 4.7 / 4.2 / 4.7 / 3.4 / 2.5 / 0.78
-5. Eccentric / 143 / 0.36
-6. Hypokinetic BM anterior, BM anteroseptal, BM anterolateral, Apicoseptal, apicolateral. Akinetic Apicoanterior
-7. 0.6 / 6.07 / 4.2 / 7.7 / Grade I
-8. Tidak
-9. —
-
-*Output:*
-```
-*Echocardiography Bedside (09-06-2026):*
-- Mildly Abnormal LV Systolic Function, EF 42.6% (TEICH), EF 41.7% (BIPLANE)
-- Normal RV systolic function, TAPSE 2.1 cm, S' lateral 12.1 cm/s
-
-Cardiac Valves:
-- Mitral: Trivial MR
-- Aorta: 3 cuspis, Normal
-- Pulmonal: Mild PR (jet < 1/3 RVOT, PR PHT 399 ms, PV AccT 171 ms)
-- Tricuspid: Normal
-
-Cardiac Dimensions:
-LV dilatation (LA mayor 4.7, LA minor 4.2, RA mayor 4.7, RA minor 3.4, LVIDd 5.8, RVDB 2.5, LA/Ao 0.78)
-
-LV Geometry:
-Eccentric LVH (LVMI 143 g/m2, RWT 0.36)
-
-Regional Wall Motion:
-Hypokinetic BM anterior, BM anteroseptal, BM anterolateral, Apicoseptal, apicolateral. Akinetic Apicoanterior
-
-eRAP: 8 mmHg (IVC exp 1.8, IVC insp 1.3)
-
-LV Diastolic Function:
-E/A 0.6, E' Med 6.07 cm/s, E' Lat 4.2 cm/s, E/E' 7.7, Grade I LV Diastolic Dysfunction
+RA dilatation, RV dilatation with LV-D shaped (RA area ... cm², RVDB ... cm, LA mayor ... cm, LA minor ... cm, LVMI ... g/m², RWT ...)
 
 No pericardial effusion
+
+## LUS (Lung Ultrasound) — WAJIB selalu dicantumkan
+
+**Prinsip:** LUS selalu ada di laporan echo, **di bawah Echo Hemodinamik** (bukan di antara Bedside dan Hemodinamik).
+- Jika pakboss **tidak menyebut** B line / efusi pleura → artinya normal: A line (+), B line (-), pleural effusion (-)
+- Jika pakboss sebut "efusi 2 cm", "B line +" dll → tulis sesuai
+- Lung sliding biasanya (+), pleural line irregular jika ada inflamasi
+
+**Format selalu:**
+```
+Lung US:
+Lung sliding (+), pleural line irregular, A line (+), B line (-), pleural effusion (-)
+```
+
+Sesuaikan jika pakboss sebut temuan.
+
+**PENTING — Format interpretasi:** tulis kelainan/kondisi DULU, lalu parameter dalam kurung. Contoh:
+- "Concentric remodeling (LVMI 70.15 g/m², RWT 0.59)" — bukan "LV Geometry: Concentric remodeling\n(LVMI..."
+- "Grade I LV Diastolic Dysfunction (E/A 0.86, E' Med 11 cm/s, E' Lat 8 cm/s)" — bukan pakai titik dua baris baru
+- "Normal Cardiac Dimensions (LVIDd 3.9 cm, LA mayor 4.3 cm, ...)"
+
+*Echo Hemodinamik:*
+TD .../... mmHg
+MAP ... mmHg
+HR ... bpm
+LVOT Diam ... cm
+LVOT VTI ... cm
+LVSV ... ml
+LVCO ... L/min
+eRAP ... mmHg
+SVR ... dynes/sec/cm⁻⁵
+BSA ... m²
+CI ... L/min/m²
+CPO ... watt
+CPI ... watt/m²
+
+Lung US:
+Lung sliding (+), pleural line irregular, A line (+), B line (-), pleural effusion (-)
+```
+
+**Aturan format:**
+- Baris kosong antara blok Echo Bedside dan blok Echo Hemodinamik
+- Kalimat terpadu (jangan bullet untuk interpretasi dimensi, geometri, RWMA, eRAP, diastolik, perikard)
+- Di Echo Hemodinamik: tiap parameter baris sendiri, tanpa pipe, tanpa label tebal.
+- TAPSE satuannya **cm** (bukan cm/s)
+
+---
+
+## Contoh Output
+
+**Data dari Tn. Nofri (10-06-2026):**
+1. Norm | 62%
+2. Norm | 2.8 | 13
+3. N | N | N | N
+4. 3.9 | 4.3/2.9 | RA area 11.3 | 2.6
+5. concentric remodeling | 70.15 | 0.59
+6. No
+7. 0.86 | 11 | 8 | — | I
+8. N
+9. —
+TDS 145 | TDD 90 | HR 92 | LVOT Diam 1.9 | LVOT VTI 16.9
+IVC exp 1.1 | IVC insp 0.9 | BB 79 | TB 160
+
+**Output:**
+```
+*Echocardiography Bedside (10-06-2026):*
+- Normal LV Systolic Function, EF 62% (TEICH)
+- Normal RV systolic function, TAPSE 2.8 cm, S' lateral 13 cm/s
+Cardiac Valves:
+- Mitral: Normal function and movement
+- Aorta: 3 cuspis, calcification (-), Normal function and movement
+- Pulmonal: Normal function and movement
+- Tricuspid: Normal function and movement
+Normal Cardiac Dimensions (LVIDd 3.9 cm, LA mayor 4.3 cm, LA minor 2.9 cm, RA area 11.3 cm², RVDB 2.6 cm)
+LV Geometry: Concentric remodeling (LVMI 70.15 g/m², RWT 0.59)
+Regional Wall Motion: Global normokinetic
+eRAP: 8 mmHg (1.1/0.9 cm)
+Grade I LV Diastolic Dysfunction (E/A 0.86, E' Med 11 cm/s, E' Lat 8 cm/s)
+No pericardial effusion
+
+*Echo Hemodinamik:*
+TD 145/90 mmHg
+MAP 108 mmHg
+HR 92 bpm
+LVOT Diam 1.9 cm
+LVOT VTI 16.9 cm
+LVSV 47.9 ml
+LVCO 4.41 L/min
+eRAP 8 mmHg
+SVR 1821 dynes/sec/cm⁻⁵
+BSA 1.87 m²
+CI 2.35 L/min/m²
+CPO 1.06 watt
+CPI 0.57 watt/m²
+
+Lung US:
+Lung sliding (+), pleural line irregular, A line (+), B line (-), pleural effusion (-)
 ```
 
 ---
 
 ## Cara Pakai Kalkulator Echo
 
-Script di `scripts/echo-calculator.py`. Tinggal isi parameternya. Contoh panggilan dari terminal:
-
-```bash
-python3 ~/.hermes/skills/clinical/echocardiography-igd/scripts/echo-calculator.py \
-  --date "08-05-2026" \
-  --lv-func "Moderately Abnormal" --ef-teich 37.1 --ef-biplane 33.2 \
-  --rv-func "Normal" --tapse 1.7 --s-lat 15.5 \
-  --aorta "3 cuspis, calcification (-), Normal" \
-  --mitral "Normal" \
-  --tricuspid "Normal" \
-  --pulmonal "Normal" \
-  --lvidd 6.71 --la-mayor 4.20 --la-minor 3.37 --ra-mayor 2.97 --ra-minor 2.40 --rvdb 2.84 \
-  --lvh-type Eccentric --lvmi 166 --rwt 0.17 \
-  --rwma "Akinetic Apicoanterior, Badal Mid Anteroseptal, Hypokinetic Basal Mid Anterolateral" \
-  --ivc-exp 1.22 --ivc-insp 0.6 \
-  --ea 1.13 --e-med 9.0 --e-lat 13.3 --grade "Grade I" \
-  --tds 105 --tdd 70 --hr 108 --lvot-diam 1.7 --lvot-vti 17.7 --bb 65 --tb 165
-```
+Script di `scripts/echo-calculator.py`. Tinggal isi parameternya.
 
 Atau pakboss kirim form isian 9 nomor ke saya, saya yang proses.
