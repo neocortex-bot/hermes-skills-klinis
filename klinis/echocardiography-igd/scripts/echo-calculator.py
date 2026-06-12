@@ -149,6 +149,16 @@ def calculate(tds=None, tdd=None, hr=None, lvot_diam=None, lvot_vti=None,
     elif grade:
         lines.append(f"- {grade} LV Diastolic Dysfunction")
     
+    # PCWP — hitung jika E/A (E wave velocity, m/s), E' Septal, dan E' Lateral tersedia
+    if ea is not None and e_med is not None and e_lat is not None:
+        # Rumus Nagueh: PCWP = 2 + 1.16 × E/e'
+        # ea = E wave velocity (m/s), e_med & e_lat = e' (cm/s) → konversi ke m/s
+        e_prime_avg_ms = ((e_med + e_lat) / 2) / 100
+        if e_prime_avg_ms > 0:
+            ee_avg = ea / e_prime_avg_ms
+            pcwp = 2 + (1.16 * ee_avg)
+            lines.append(f"- PCWP: {pcwp:.1f} mmHg (E/e' avg {ee_avg:.1f})")
+    
     # 8. Pericardial effusion
     if perikard:
         lines.append(f"- Pericardial Effusion: {perikard}")
