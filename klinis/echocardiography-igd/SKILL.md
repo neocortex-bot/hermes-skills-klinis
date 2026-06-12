@@ -67,6 +67,34 @@ _ | TR Jet [Central/Excentric] | Regurg Jet Area > _% RA | TR Vmax _ m/s | TR ma
 - Jika pakboss sebut ada abnormality (Mild MR, Moderate AS, dll) — tulis sesuai yang pakboss sebutkan, jangan "Normal function and movement".
 - Jika katup tidak disebut sama sekali, jangan sematkan baris katup itu.
 
+**Aturan Pelebaran Katup (WAJIB):**
+Saat pakboss menyebut grade katup (Mild/Moderate/Severe MR/AR/PR/TR), jabarkan dengan parameter berikut. Jangan tulis cuma "Mild PR" saja — harus diperluas dengan template di bawah:
+
+| Katup | Jika pakboss sebut | Format output yang dijabarkan |
+|-------|-------------------|-------------------------------|
+| Tricuspid | Mild/Moderate/Severe TR | `Severe TR (Vmax ... m/s, MaxPG ... mmHg), PH Probability [Low/Intermediate/High]` |
+| Pulmonal | Mild/Moderate PR | `Mild Pulmonary Regurgitation (PR Regurgitant Jet < 1/3 RVOT)` — untuk Mild. `Moderate Pulmonary Regurgitation (Regurg Jet Width > 1/3 RVOT)` — untuk Moderate. Jika ada MPA dilatasi, tambahkan koma lalu `MPA Dilatation (... cm)`. |
+| Mitral | MR | `[Grade] MR (ERO ... cm², RV ... ml, VC ... cm)` — jika ERO/RV/VC tidak disebut, tulis sesuai grade saja |
+| Aorta | AR | `[Grade] AR` — jika PHT disebut: `[Grade] AR (PHT ... ms)` |
+| Mitral | MS | `MS (MVA planimetry ... cm², MVA PHT ... cm², Mean PG ... mmHg, Wilkins Score ...)` |
+| Aorta | AS | `AS (AV Vmax ... m/s, mean PG ... mmHg, AVA continuity eq ... cm²)` |
+
+**Pengecualian:** Jika pakboss hanya kirim grade tanpa angka parameter, tulis grade + jelaskan dari parameter yang ada saja.
+
+**Aturan TR + PH Probability:**
+- TR Mild → tulis `Mild TR` saja
+- TR Moderate → tulis `Moderate TR (Vmax ... m/s, MaxPG ... mmHg)` — cantumkan Vmax/MaxPG jika ada
+- TR Severe → tulis `Severe TR` + selalu jabarkan `(Vmax ... m/s, MaxPG ... mmHg)` jika ada datanya + `PH Probability [Low/Intermediate/High]`
+- PH Probability:
+  - TR Vmax ≤ 2.8 + tanda RV overload lain (D-shaped LV, RV dilatasi, RA dilatasi, RVOT AccT < 105ms) → "Intermediate Probability of PH"
+  - TR Vmax > 2.8 → lihat tanda RV overload: jika ada tanda RV overload → "High Probability of PH"; jika tanpa tanda → "Intermediate Probability of PH"
+  - TR Vmax > 3.4 → langsung "High Probability of PH"
+
+**Aturan TAPSE:**
+- TAPSE ≥ 1.7 cm → "Normal RV systolic function"
+- TAPSE 1.5-1.6 cm → "Borderline RV systolic function"
+- TAPSE < 1.5 cm → "RV Systolic Dysfunction"
+
 ---
 
 ## Interpretasi Parameter Echo
@@ -96,21 +124,34 @@ _ | TR Jet [Central/Excentric] | Regurg Jet Area > _% RA | TR Vmax _ m/s | TR ma
 
 ## Template Output Echo Bedside — FORMAT PASTI
 
+**Aturan struktur output (WAJIB):**
+1. **Pulmonary Hypertension** — section header jika ada PH (TR Severe + PASP ↑ atau tanda RV overload)
+2. **Trombus/temuan lain** — baris sendiri
+3. **LV & RV function** — bullet `- [temuan]`
+4. **Cardiac Valves** — section dengan sub-bullet
+5. **Dimensi + Geometri jadi SATU baris** — tulis `RA dilatation, RV dilatation with LV-D shaped (RA area ... cm², RVDB ... cm, LA mayor ... cm, LA minor ... cm, LVMI ... g/m², RWT ...)` — jangan pisah dimensi dan geometri
+6. **No pericardial effusion** — baris sendiri
+
 ```
 *Echocardiography Bedside (tanggal):*
-- [temuan LV Function], EF ...% (TEICH)
-- [temuan RV Function], TAPSE ... cm, S' lateral ... cm/s
+
+- Pulmonary Hypertension
+
+- Trombus seen at [lokasi] (ukuran)
+
+- Normal LV Systolic Function, EF ...% (TEICH)
+
+- Normal RV systolic function, TAPSE ... cm, Mc Connel sign [-/+]
+
 Cardiac Valves:
 - Mitral: Normal function and movement
 - Aorta: 3 cuspis, calcification (-), Normal function and movement
-- Pulmonal: Normal function and movement
-- Tricuspid: Normal function and movement
-[Interpretasi Dimensi] (LVIDd ... cm, LA mayor ... cm, LA minor ... cm, RA area ... cm², RVDB ... cm)
-LV Geometry: [kelainan] (LVMI ... g/m², RWT ...)
-Regional Wall Motion: [Global normokinetic / ...]
-eRAP: ... mmHg (exp/insp)
-[Grade] LV Diastolic Dysfunction (E/A ..., E' Med ... cm/s, E' Lat ... cm/s)
-[Pericardial effusion / No pericardial effusion]
+- Pulmonal: ...
+- Tricuspid: ...
+
+RA dilatation, RV dilatation with LV-D shaped (RA area ... cm², RVDB ... cm, LA mayor ... cm, LA minor ... cm, LVMI ... g/m², RWT ...)
+
+No pericardial effusion
 
 ## LUS (Lung Ultrasound) — WAJIB selalu dicantumkan
 
