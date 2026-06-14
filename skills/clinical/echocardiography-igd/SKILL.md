@@ -15,6 +15,7 @@ triggers:
 - **Interpretasi sendiri** — jangan copas mentah dari data pakboss. Contoh: LVIDd 3.9 cm itu normal → tulis "Normal Cardiac Dimensions". LA 4.3 cm itu dilatasi → tulis "LA dilatation". Dll.
 - **Yang tidak perlu diisi pakboss** (kalkulasi otomatis dari app hemodinamik atau dari TTV):
   - MAP, LV SV, LV CO, eRAP, SVR, BSA, CI, CPO, CPI, Collapsibility Index, Distensibility Index
+  - PCWP (kalkulasi otomatis jika E/A, E Septal, dan E Lateral tersedia — rumus Nagueh)
   - TDS, TDD, HR, Suhu — dari monitor TTV
   - Lung US (A-line, B-line, efusi pleura) — dari app
   - Urine output, fluid balance — dari catatan
@@ -182,6 +183,7 @@ LVOT VTI ... cm
 LVSV ... ml
 LVCO ... L/min
 eRAP ... mmHg
+PCWP ... mmHg (E/e' avg ...)  — hanya jika E/A (E wave), E Septal, E Lateral tersedia
 SVR ... dynes/sec/cm⁻⁵
 BSA ... m²
 CI ... L/min/m²
@@ -241,6 +243,7 @@ LVOT VTI 16.9 cm
 LVSV 47.9 ml
 LVCO 4.41 L/min
 eRAP 8 mmHg
+PCWP 12.5 mmHg (E/e' avg 9.1)
 SVR 1821 dynes/sec/cm⁻⁵
 BSA 1.87 m²
 CI 2.35 L/min/m²
