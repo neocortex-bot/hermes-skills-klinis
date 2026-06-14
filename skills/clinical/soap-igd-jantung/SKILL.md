@@ -170,7 +170,11 @@ HBsAg/Anti HCV:
 
 **f. Echocardiography — Checklist:**
 - [ ] Bold header: *Echocardiography (DD-MM-YYYY):*
+<<<<<<< HEAD
 - [ ] Isi: Menyusul
+=======
+- [ ] Isi: Menggunakan skill echocardiography-igd. Format output: `Echocardiography Bedside (tanggal):` — tanpa asterisk/bold, tanpa bullet `-`
+>>>>>>> 6aa6305 (feat: add gold standard echo checklist + fix katup rules & TAPSE grading)
 
 ### 6. ASSESSMENT [A] — Checklist:
 - [ ] Bold header: *Mohon izin kami assess dengan:*
