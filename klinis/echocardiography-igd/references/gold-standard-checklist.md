@@ -37,6 +37,8 @@ Masalah katup (jabarkan di sini):
 
 ### A. FORMAT UMUM
 - [ ] **No pipe `|`** di output laporan
+- [ ] **Laporan dikirim dalam CODE BLOCK** (``` ```) — bukan teks biasa
+- [ ] **Tanpa bullet points / list markdown** untuk konten laporan echo — plain text dalam code block
 - [ ] **Interpretasi dulu**, parameter dalam kurung — bukan parameter dulu baru interpretasi
 - [ ] TAPSE satuannya **cm** (bukan cm/s)
 - [ ] S' Lateral satuannya **cm/s**
@@ -280,6 +282,8 @@ Lung sliding (+), pleural line irregular, A line (+), B line (-), pleural effusi
 ## ⛔ PITFALLS — JANGAN PERNAH
 
 - [ ] Jangan pipe `|` di output
+- [ ] **Jangan kirim laporan echo tanpa code block** — WAJIB dikirim dalam ``` ```
+- [ ] **Jangan pakai bullet points / list markdown** untuk konten laporan echo
 - [ ] Jangan tulis parameter dulu baru interpretasi — **interpretasi dulu**
 - [ ] Jangan tulis "tidak ada" untuk parameter yang tidak disebut — **jangan cantumkan sama sekali**
 - [ ] Jangan pisah dimensi dan geometri jadi baris terpisah — jadi **satu baris**

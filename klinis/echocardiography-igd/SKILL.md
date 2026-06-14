@@ -248,6 +248,25 @@ Lung sliding (+), pleural line irregular, A line (+), B line (-), pleural effusi
 
 ---
 
+## ⛔ WAJIB — Kirim laporan dalam CODE BLOCK
+
+Setiap kali mengirim laporan echo ke pakboss, laporan HARUS dikirim dalam **code block** (``` ```).
+
+Bukan format biasa — gunakan triple backtick agar laporan echo tampil rapi di chat.
+
+Contoh cara kirim:
+```
+Echocardiography Bedside (14-06-2026):
+...
+```
+BUKAN seperti ini:
+Echocardiography Bedside (14-06-2026):
+...
+
+**Larangan keras:**
+- Jangan pakai bullet points / list markdown (`- ` atau `1. `) untuk konten laporan echo — laporan adalah plain text dalam code block.
+- Jangan kirim laporan sebagai teks biasa tanpa code block.
+
 ## ⛔ GOLD STANDARD CHECKLIST
 
 **Sebelum mengirim laporan echo, buka dan centang:**
