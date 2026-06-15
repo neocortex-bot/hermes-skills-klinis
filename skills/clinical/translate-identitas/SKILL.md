@@ -14,52 +14,77 @@ triggers:
 Output identitas tanpa codeblock -- langsung plain text dengan format:
 
 ```
-: [Initial]
-: [Age] years old
-: [DD-MM-YYYY]
-: [City/Domicile]
-: [MRN]
-: [DD-MM-YYYY]
-: [dr. Name]
+Name    : [Initial]
+Age     : [Age] years old
+Date of birth : [DD-MM-YYYY]
+Address : [City/Domicile]
+MR      : [MRN]
+Date of Admission : [DD-MM-YYYY]
+DPJP    : [dr. Name]
 ```
 
-- Setiap baris diawali dengan `: ` (colon + space)
-- Tidak ada label/key -- cukup nilai langsung setelah `: `
-- Baris pertama: Inisial + title (Mr. / Mrs.)
-- Tanggal Lahir dan Date of Admission format DD-MM-YYYY
+- Setiap baris berisi label + colon + value, rata kiri
+- Label: Name, Age, Date of birth, Address, MR, Date of Admission, DPJP
 - Info rujukan opsional -- baris terakhir bila ada, dengan format:
-  `The patient was referred from [RS] with [diagnosis]`
+  `Referral : [RS] with [diagnosis]`
 
 ## Checklist Wajib
 
 ### Struktur
-- [ ] Format `: [value]` -- colon + space, tanpa label
-- [ ] Urutan tetap: Inisial -> Usia -> TTL -> Domisili -> MRN -> Admission -> DPJP -> Rujukan (opsional)
+- [ ] Format `Label : [value]` -- rata kiri, colon + space
+- [ ] Urutan tetap: Name -> Age -> Date of birth -> Address -> MR -> Date of Admission -> DPJP -> Referral (opsional)
 - [ ] Tidak ada codeblock -- plain text
-- [ ] Bila info tidak tersedia -- KOSONGKAN barisnya (jangan halusinasi, jangan isi "N/A" atau "--")
+- [ ] Bila info tidak tersedia -- KOSONGKAN value-nya (jangan halusinasi, jangan isi "N/A")
+- [ ] Label konsisten: persis Name, Age, Date of birth, Address, MR, Date of Admission, DPJP, Referral
 
 ### Aturan Per Baris
 
-| Baris | Format | Contoh |
+| Label | Format | Contoh |
 |---|---|---|
-| 1 -- Inisial | `: Mr./Mrs. [Huruf depan]` | `: Mr. M` |
-| 2 -- Usia | `: [angka] years old` | `: 59 years old` |
-| 3 -- Tanggal Lahir | `: [DD-MM-YYYY]` | `: 09-12-1966` |
-| 4 -- Domisili | `: [Kota]` (dari input) | `: [kosong bila tidak ada]` |
-| 5 -- MRN | `: [nomor RM]` | `: 205526` |
-| 6 -- Date of Admission | `: [DD-MM-YYYY]` (tanggal masuk IGD) | `: 15-06-2026` |
-| 7 -- DPJP | `: dr. [Nama]` (tanpa gelar Sp, cukup nama) | `: dr. Az Hafid Nashar` |
-| 8 -- Rujukan (opsional) | `The patient was referred from [RS] with [diagnosis]` | Hanya bila ada info rujukan |
+| Name | `Name    : Mr./Mrs. [Huruf depan]` | `Name    : Mr. M` |
+| Age | `Age     : [angka] years old` | `Age     : 59 years old` |
+| Date of birth | `Date of birth : [DD-MM-YYYY]` | `Date of birth : 09-12-1966` |
+| Address | `Address : [Kota]` (dari input) | `Address : [kosong bila tidak ada]` |
+| MR | `MR      : [nomor RM]` | `MR      : 205526` |
+| Date of Admission | `Date of Admission : [DD-MM-YYYY]` | `Date of Admission : 15-06-2026` |
+| DPJP | `DPJP    : [Nama]` (tanpa "dr." jika tidak disebut, cukup nama) | `DPJP    : dr. Az Hafid Nashar` |
+| Referral (opsional) | `Referral : [RS] with [diagnosis]` | Hanya bila ada info rujukan |
 
 ### Aturan Khusus
-- [ ] Inisial: huruf depan nama depan saja. Mr. untuk laki-laki, Mrs. untuk perempuan
-- [ ] Usia: dari input -- jika tidak disebut, kosongkan
-- [ ] TTL: dari input -- jika tidak disebut, kosongkan
-- [ ] Domisili: dari input -- jika tidak disebut, kosongkan (jangan isi tebakan)
-- [ ] MRN: nomor RM dari input
-- [ ] Date of Admission: tanggal masuk IGD/RS -- dari input atau hari ini
-- [ ] DPJP: nama dokter penanggung jawab -- cukup nama tanpa gelar subspesialis, tanpa "Sp."
-- [ ] Rujukan: hanya bila ada info "dirujuk dari" -- jika tidak ada, skip baris ini
+- [ ] Name: Mr. untuk laki-laki, Mrs. untuk perempuan, diikuti huruf depan nama
+- [ ] Age: dari input -- jika tidak disebut, kosongkan
+- [ ] Date of birth: dari input -- jika tidak disebut, kosongkan
+- [ ] Address: dari input -- jika tidak disebut, kosongkan (jangan isi tebakan)
+- [ ] MR: nomor RM dari input
+- [ ] Date of Admission: tanggal masuk IGD/RS -- dari input
+- [ ] DPJP: nama dokter penanggung jawab sesuai input -- dengan gelar "dr." bila disebut
+- [ ] Referral: hanya bila ada info "dirujuk dari" -- jika tidak ada, skip baris ini
+
+### Contoh Output -- Tanpa Rujukan
+
+```
+Name    : Mr. M
+Age     : 59 years old
+Date of birth : 09-12-1966
+Address : 
+MR      : 205526
+Date of Admission : 15-06-2026
+DPJP    : dr. Az Hafid Nashar
+```
+
+### Contoh Output -- Dengan Rujukan
+
+```
+Name    : Mrs. S
+Age     : 63 years old
+Date of birth : 07-10-1963
+Address : Gowa
+MR      : 1630580
+Date of Admission : 21-05-2026
+DPJP    : dr. NP
+
+Referral : Syeikh Yusuf Gowa Hospital with STEMI Inferior
+```
 
 ### Contoh Output -- Tanpa Rujukan
 
