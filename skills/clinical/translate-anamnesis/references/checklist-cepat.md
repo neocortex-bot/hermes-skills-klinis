@@ -58,24 +58,26 @@
 
 ## 3 Codeblocks
 - [ ] Output **3 codeblock terpisah**
-- [ ] Codeblock 1: **Assessment (English):**
-- [ ] Codeblock 2: **Therapy (English):**
-- [ ] Codeblock 3: **Plan (English):**
+- [ ] Codeblock 1: Assessment (tanpa header, tanpa bullet)
+- [ ] Codeblock 2: Therapy (tanpa header, tanpa bullet `-`)
+- [ ] Codeblock 3: Plan (tanpa header, tanpa bullet `-`)
 
 ## Assessment
 - [ ] Diagnosis medis tetap istilah baku (STEMI, CAD, HFmrEF, dll)
 - [ ] TIMI/GRACE/ARC-HBR score — angka tetap, label di-Inggris-kan
 - [ ] Killip class tetap "KILLIP I/II/III/IV"
 - [ ] Semua diagnosis dari input asli tersampaikan
+- [ ] **TANPA bullet** — 1 baris per diagnosis
 
 ## Therapy
 - [ ] IVFD di baris pertama
-- [ ] Format: `- [Obat] [dosis] / [frekuensi] / [rute]`
+- [ ] Format: `[Obat] [dosis] / [frekuensi] / [rute]` — **TANPA bullet `-`**
 - [ ] /24h/ untuk sekali sehari, /12h/ untuk dua kali sehari
 - [ ] /sos untuk (kp)
 - [ ] Nama obat dipertahankan (Aspilet, Clopidogrel, dll)
+- [ ] 1 baris per obat
 
 ## Plan
-- [ ] Bullet list sesuai asli
+- [ ] **TANPA bullet** — 1 baris per plan item
 - [ ] Istilah teknis dipertahankan (CVCU, DR, UR, Cr)
 - [ ] Semua item dari input asli tersampaikan

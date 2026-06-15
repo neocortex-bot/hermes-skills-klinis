@@ -242,11 +242,11 @@ Section ini untuk menterjemahkan terapi / rencana terapi dari Bahasa Indonesia k
 
 ### ⛔ CHECKLIST THERAPY
 
-- [ ] Diawali header: `**Therapy (English):**`
-- [ ] Terjemahkan nama obat ke Inggris bila ada padanannya
-- [ ] Format tetap `- [Obat] [dosis]/[frekuensi]/[rute]`
+- [ ] Header di luar codeblock — tidak ada di dalam codeblock
+- [ ] Format per baris: `[Medication] [dose] / [frequency] / [route]` — tanpa bullet `-`
 - [ ] IVFD di baris pertama
 - [ ] Dosis desimal pakai titik
+- [ ] Setiap obat 1 baris, tanpa bullet list
 
 ### Aturan Terjemahan Nama Obat
 
@@ -291,9 +291,8 @@ Section ini untuk menterjemahkan rencana / plan dari Bahasa Indonesia ke Bahasa 
 
 ### ⛔ CHECKLIST PLAN
 
-- [ ] Diawali header: `**Plan (English):**`
-- [ ] Format bullet list sesuai aslinya
-- [ ] Istilah teknis dipertahankan: CVCU, DR, UR, Cr, Profil Lipid
+- [ ] Header di luar codeblock — tidak ada di dalam codeblock
+- [ ] Format per baris tanpa bullet `-`, 1 baris per plan item
 
 ### Aturan Terjemahan Istilah Plan
 
@@ -309,26 +308,32 @@ Section ini untuk menterjemahkan rencana / plan dari Bahasa Indonesia ke Bahasa 
 
 ## Complete Output Format — 3 Codeblocks
 
-Ketika user meminta translate semua (assessment + terapi + plan), output berupa **3 codeblock terpisah**. Tidak ada header di dalam codeblock.
+Ketika user meminta translate semua (assessment + terapi + plan), output berupa **3 codeblock terpisah**. Tidak ada header dan tidak ada bullet `-` di dalam codeblock.
 
 ````
 ```
 
-[Diagnosis list — terjemahan]
+STEMI [region] Wall, Onset [hours], KILLIP [class] (TIMI Score ...)
+CAD2VD, post pPCI ...
 
 ```
 
 
 ```
 
-[Obat list — terjemahan]
+IVFD NaCl 0.9% 500 cc / 24h / IV
+Aspilet 80 mg / 24h / oral
+...
 
 ```
 
 
 ```
 
-[Plan list — terjemahan]
+Monitor vital signs and hemodynamics
+Monitor signs of bleeding
+Check DR, UR, Cr post rehydration
+...
 
 ```
 ````
