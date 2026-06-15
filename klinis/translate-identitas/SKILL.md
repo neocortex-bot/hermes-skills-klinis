@@ -11,7 +11,7 @@ triggers:
 
 ## Format Output
 
-Output identitas tanpa codeblock -- langsung plain text dengan format:
+Output identitas di dalam codeblock dengan format:
 
 ```
 Name    : [Initial]
@@ -21,21 +21,24 @@ Address : [City/Domicile]
 MR      : [MRN]
 Date of Admission : [DD-MM-YYYY]
 DPJP    : [dr. Name]
+
+Patient Reffered From [RS] with [diagnosis]
 ```
 
 - Setiap baris berisi label + colon + value, rata kiri
 - Label: Name, Age, Date of birth, Address, MR, Date of Admission, DPJP
-- Info rujukan opsional -- baris terakhir bila ada, dengan format:
-  `Referral : [RS] with [diagnosis]`
+- Referral: baris narasi terakhir, 1 baris kosong setelah DPJP, diawali "Patient Reffered From"
+- Jika tidak ada rujukan, SKIP baris Referral dan baris kosongnya
 
 ## Checklist Wajib
 
 ### Struktur
 - [ ] Format `Label : [value]` -- rata kiri, colon + space
-- [ ] Urutan tetap: Name -> Age -> Date of birth -> Address -> MR -> Date of Admission -> DPJP -> Referral (opsional)
-- [ ] Tidak ada codeblock -- plain text
+- [ ] Urutan tetap: Name -> Age -> DOB -> Address -> MR -> Date of Admission -> DPJP
+- [ ] Referral: baris narasi terakhir, 1 baris kosong setelah DPJP
+- [ ] **Di dalam codeblock — bukan plain text**
 - [ ] Bila info tidak tersedia -- KOSONGKAN value-nya (jangan halusinasi, jangan isi "N/A")
-- [ ] Label konsisten: persis Name, Age, Date of birth, Address, MR, Date of Admission, DPJP, Referral
+- [ ] Label konsisten: persis Name, Age, Date of birth, Address, MR, Date of Admission, DPJP
 
 ### Aturan Per Baris
 
@@ -44,11 +47,12 @@ DPJP    : [dr. Name]
 | Name | `Name    : Mr./Mrs. [Huruf depan]` | `Name    : Mr. M` |
 | Age | `Age     : [angka] years old` | `Age     : 59 years old` |
 | Date of birth | `Date of birth : [DD-MM-YYYY]` | `Date of birth : 09-12-1966` |
-| Address | `Address : [Kota]` (dari input) | `Address : [kosong bila tidak ada]` |
+| Address | `Address : [Kota]` (dari input) | `Address : Gowa` (kosong jika tidak ada) |
 | MR | `MR      : [nomor RM]` | `MR      : 205526` |
 | Date of Admission | `Date of Admission : [DD-MM-YYYY]` | `Date of Admission : 15-06-2026` |
 | DPJP | `DPJP    : [Nama]` (tanpa "dr." jika tidak disebut, cukup nama) | `DPJP    : dr. Az Hafid Nashar` |
-| Referral (opsional) | `Referral : [RS] with [diagnosis]` | Hanya bila ada info rujukan |
+
+Referral (opsional): baris narasi setelah 1 baris kosong dari DPJP, diawali "Patient Reffered From [RS] with [diagnosis]"
 
 ### Aturan Khusus
 - [ ] Name: Mr. untuk laki-laki, Mrs. untuk perempuan, diikuti huruf depan nama
@@ -58,7 +62,8 @@ DPJP    : [dr. Name]
 - [ ] MR: nomor RM dari input
 - [ ] Date of Admission: tanggal masuk IGD/RS -- dari input
 - [ ] DPJP: nama dokter penanggung jawab sesuai input -- dengan gelar "dr." bila disebut
-- [ ] Referral: hanya bila ada info "dirujuk dari" -- jika tidak ada, skip baris ini
+- [ ] Referral: hanya bila ada info "dirujuk dari" -- 1 baris kosong setelah DPJP, lalu "Patient Reffered From [RS] with [diagnosis]"
+- [ ] Jika tidak ada rujukan: SKIP baris Referral dan baris kosongnya
 
 ### Contoh Output -- Tanpa Rujukan
 
@@ -83,33 +88,7 @@ MR      : 1630580
 Date of Admission : 21-05-2026
 DPJP    : dr. NP
 
-Referral : Syeikh Yusuf Gowa Hospital with STEMI Inferior
-```
-
-### Contoh Output -- Tanpa Rujukan
-
-```
-: Mr. M
-: 59 years old
-: 09-12-1966
-: 
-: 205526
-: 15-06-2026
-: dr. Az Hafid Nashar
-```
-
-### Contoh Output -- Dengan Rujukan
-
-```
-: Mrs. S
-: 63 years old
-: 07-10-1963
-: Gowa
-: 1630580
-: 21-05-2026
-: dr. NP
-
-The patient was referred from Syeikh Yusuf Gowa Hospital with STEMI Inferior
+Patient Reffered From Syeikh Yusuf Gowa Hospital with STEMI Inferior
 ```
 
 ## Pitfalls
@@ -118,4 +97,6 @@ The patient was referred from Syeikh Yusuf Gowa Hospital with STEMI Inferior
 - Jangan isi domisili/alamat bila tidak disebut
 - DPJP: cukup nama tanpa gelar subspesialis -- simpan untuk SOAP
 - Tanggal LAHIR pasien, bukan tanggal visit -- bedakan dengan Date of Admission
-- Info rujukan hanya 1 baris terakhir, pisahkan dengan 1 baris kosong dari DPJP
+- Referral: baris NARASI (bukan Label : Value), diawali "Patient Reffered From"
+- Referral: 1 baris kosong setelah DPJP, bukan langsung setelah Address
+- Jika tidak ada rujukan, SKIP baris Referral dan baris kosongnya
