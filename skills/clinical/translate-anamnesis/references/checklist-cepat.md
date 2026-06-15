@@ -51,3 +51,31 @@
 - [ ] "breaths/minute" bukan "/min"
 - [ ] "regular/irregular" bukan "reguler"
 - [ ] (+) untuk ada / (-) untuk tidak ada
+
+---
+
+# Checklist Cepat — Assessment + Therapy + Plan Translation
+
+## 3 Codeblocks
+- [ ] Output **3 codeblock terpisah**
+- [ ] Codeblock 1: **Assessment (English):**
+- [ ] Codeblock 2: **Therapy (English):**
+- [ ] Codeblock 3: **Plan (English):**
+
+## Assessment
+- [ ] Diagnosis medis tetap istilah baku (STEMI, CAD, HFmrEF, dll)
+- [ ] TIMI/GRACE/ARC-HBR score — angka tetap, label di-Inggris-kan
+- [ ] Killip class tetap "KILLIP I/II/III/IV"
+- [ ] Semua diagnosis dari input asli tersampaikan
+
+## Therapy
+- [ ] IVFD di baris pertama
+- [ ] Format: `- [Obat] [dosis] / [frekuensi] / [rute]`
+- [ ] /24h/ untuk sekali sehari, /12h/ untuk dua kali sehari
+- [ ] /sos untuk (kp)
+- [ ] Nama obat dipertahankan (Aspilet, Clopidogrel, dll)
+
+## Plan
+- [ ] Bullet list sesuai asli
+- [ ] Istilah teknis dipertahankan (CVCU, DR, UR, Cr)
+- [ ] Semua item dari input asli tersampaikan

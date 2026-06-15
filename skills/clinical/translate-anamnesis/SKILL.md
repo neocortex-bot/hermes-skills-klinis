@@ -5,6 +5,8 @@ triggers:
   - user meminta translate anamnesis ke bahasa Inggris
   - user menyebut "translate" dan "anamnesis" pasien
   - user meminta Inggris section untuk anamnesis/riwayat
+  - user meminta translate pemfis / pemeriksaan fisis ke Inggris
+  - user meminta English version of physical examination
 ---
 
 # Translate Anamnesis → English
@@ -200,6 +202,188 @@ Extremities: warm extremities, no edema, CRT <2 seconds
 | CRT < 2 detik | CRT <2 seconds |
 | tidak ada | (-) |
 | ada | (+) |
+
+---
+
+---
+
+## Assessment Translation
+
+Section ini untuk menterjemahkan assessment / diagnosis dari Bahasa Indonesia ke Bahasa Inggris.
+
+**Format baku (3 codeblock terpisah — output selalu 3 block):**
+
+````
+```
+
+**Assessment (English):**
+
+[Diagnosis 1]
+[Diagnosis 2]
+...
+
+```
+
+````
+
+### ⛔ CHECKLIST ASSESSMENT
+
+- [ ] Diawali header: `**Assessment (English):**`
+- [ ] Format bullet/bulet sesuai aslinya, hanya diterjemahkan ke Inggris
+- [ ] Diagnosis seperti "STEMI Anteroseptal Wall" tetap dipertahankan istilah medisnya
+- [ ] Stratifikasi risiko: TIMI Score, GRACE Score, ARC-HBR — diterjemahkan labelnya saja, angkanya tetap
+- [ ] Killip class: tetap "KILLIP I/II/III/IV"
+- [ ] CAD/CCS/HF: tetap istilah medis baku
+- [ ] Hypertensive Heart Disease, Heart Failure dst — terjemahkan narasinya
+
+### Aturan Terjemahan Istilah Assessment
+
+| Indonesia | Inggris |
+|---|---|
+| Assess dengan | Assessment |
+| STEMI [regio] Wall Onset [jam] KILLIP [kelas] | STEMI [region] Wall, Onset [hours], KILLIP [class] |
+| TIMI Score [angka] point [persen]% risk of All-Cause Mortality at 30 days | TIMI Score [angka], [persen]% estimated 30-day mortality |
+| ARC-HBR Scorex Major [angka] poin, Minor [angka] Point | ARC-HBR Score: Major [angka], Minor [angka] |
+| CAD2VD post pPCI 1 stent DES di [pembuluh] | CAD2VD, post pPCI 1 DES stent in [vessel] |
+| Heart Failure mildy reduce Ejection Fraction | Heart Failure with mildly reduced Ejection Fraction (HFmrEF) |
+| Chronic Coronary Syndrome clinical scenario type [angka] | Chronic Coronary Syndrome, clinical scenario type [angka] |
+| Hypertensive Heart Disease | Hypertensive Heart Disease |
+
+---
+
+## Therapy Translation
+
+Section ini untuk menterjemahkan terapi / rencana terapi dari Bahasa Indonesia ke Bahasa Inggris.
+
+**Format baku (3 codeblock terpisah — output selalu 3 block):**
+
+````
+```
+
+**Therapy (English):**
+
+- [Medication] [dose] / [frequency] / [route]
+- ...
+
+```
+
+````
+
+### ⛔ CHECKLIST THERAPY
+
+- [ ] Diawali header: `**Therapy (English):**`
+- [ ] Terjemahkan nama obat ke Inggris bila ada padanannya
+- [ ] Format tetap `- [Obat] [dosis]/[frekuensi]/[rute]`
+- [ ] IVFD di baris pertama
+- [ ] Dosis desimal pakai titik
+
+### Aturan Terjemahan Nama Obat
+
+| Indonesia | Inggris |
+|---|---|
+| Aspilet | Aspilet (Acetylsalicylic Acid) — atau langsung "Aspilet 80 mg" |
+| Clopidogrel | Clopidogrel |
+| Ranitidin | Ranitidine |
+| NTG | NTG (Nitroglycerin) |
+| Atorvastatin | Atorvastatin |
+| Bisoprolol | Bisoprolol |
+| Ramipril | Ramipril |
+| Furosemide | Furosemide |
+| ISDN | ISDN (Isosorbide Dinitrate) |
+| Heparin | Heparin |
+| Laxadyn Syr | Laxadyn Syrup (Lactulose) |
+| Simvastatin | Simvastatin |
+| NaCl 0.9% | NaCl 0.9% |
+| Rehidrasi NaCl 0.9% .../SP | Rehydration: NaCl 0.9% .../SP |
+| maintenance | maintenance |
+| /oral | /oral |
+| /IV | /IV |
+| /SP | /SP (syringe pump) |
+| /SL | /SL (sublingual) |
+| /kp | /sos (as needed) |
+| (kp) | (sos) |
+| 24 jam | 24 hours — tetapi tetap pakai format /24h untuk frekuensi |
+| /24 jam/ | /24h/ |
+| H-1 | H-1 (unfractionated heparin protocol) |
+
+**Format frekuensi konsisten:**
+- /24h/ — untuk sekali sehari
+- /12h/ — untuk dua kali sehari
+- /8h/ — untuk tiga kali sehari
+- /6h/ — untuk empat kali sehari
+
+---
+
+## Plan Translation
+
+Section ini untuk menterjemahkan rencana / plan dari Bahasa Indonesia ke Bahasa Inggris.
+
+**Format baku (3 codeblock terpisah — output selalu 3 block):**
+
+````
+```
+
+**Plan (English):**
+
+- [Plan item 1]
+- [Plan item 2]
+- ...
+
+```
+
+````
+
+### ⛔ CHECKLIST PLAN
+
+- [ ] Diawali header: `**Plan (English):**`
+- [ ] Format bullet list sesuai aslinya
+- [ ] Istilah teknis dipertahankan: CVCU, DR, UR, Cr, Profil Lipid
+
+### Aturan Terjemahan Istilah Plan
+
+| Indonesia | Inggris |
+|---|---|
+| Monitoring Tanda vital dan hemodinamik | Monitor vital signs and hemodynamics |
+| Monitoring tanda-tanda perdarahan | Monitor signs of bleeding |
+| Cek DR, UR, Cr post rehidrasi | Check DR, UR, Cr post rehydration |
+| Cek Profil Lipid | Check Lipid Profile |
+| Pindah Perawatan CVCU | Transfer to CVCU for further care |
+
+---
+
+## Complete Output Format — 3 Codeblocks
+
+Ketika user meminta translate semua (assessment + terapi + plan), output berupa **3 codeblock terpisah**:
+
+````
+```
+
+**Assessment (English):**
+
+[Diagnosis list — terjemahan]
+
+```
+
+
+```
+
+**Therapy (English):**
+
+[Obat list — terjemahan]
+
+```
+
+
+```
+
+**Plan (English):**
+
+[Plan list — terjemahan]
+
+```
+````
+
+Setiap codeblock dipisah baris kosong agar rapi. Ini adalah format baku untuk output translate assessment + therapy + plan.
 
 ---
 
