@@ -1,0 +1,53 @@
+# Checklist Cepat — Translate Anamnesis
+
+## Struktur
+- [ ] **Chief complaint:** [keluhan singkat]
+- [ ] Narasi paragraf lengkap
+- [ ] **Coronary Risk Factors:** (bullet list)
+
+## Konten
+- [ ] Chest pain triple criteria (lokasi, karakter, penjalaran)
+- [ ] Onset + durasi + skala nyeri
+- [ ] Diaphoresis (+)/(-)
+- [ ] Nausea (+)/(-)
+- [ ] Vomiting (+)/(-)
+- [ ] Shortness of breath (+)/(-)
+- [ ] DOE/PND/Orthopnea (+)/(-)
+- [ ] Previous chest pain (+)/(-)
+- [ ] Palpitations (+)/(-)
+- [ ] Other complaints: fever, cough, BAK, BAB (+)/(-)
+- [ ] Riwayat PCI/angiografi (tahun, pembuluh, stent)
+- [ ] Obat rutin (nama + dosis)
+- [ ] Terapi RS rujukan (bila ada)
+
+## Risiko Kardiovaskular
+- [ ] Hipertensi (+)/(-)
+- [ ] DM (+)/(-)
+- [ ] Merokok (since, jumlah/hari)
+- [ ] PJ Keluarga (+)/(-) + siapa
+
+## Bahasa
+- [ ] (+) untuk "ada" / (-) untuk "tidak ada"
+- [ ] Bukan "denies", bukan "present/absent"
+- [ ] Boleh broken English
+- [ ] Semua konteks terjaga — tidak ada info terlewat
+
+---
+
+# Checklist Cepat — Physical Examination Translation
+
+## Format
+- [ ] Status kesadaran baris pertama
+- [ ] TTV 1 baris — dipisah titik
+- [ ] Mata: anemic (-)/icteric (-)
+- [ ] JVP R+... cmH2O
+- [ ] Heart sounds S1/S2 regular, murmur (-)
+- [ ] Lungs: Vesicular, no rhonchi/wheezing
+- [ ] Abdomen: (bila ada)
+- [ ] Extremities: warm/cold, edema, CRT
+
+## Istilah
+- [ ] "Blood Pressure" bukan "Tensi"
+- [ ] "breaths/minute" bukan "/min"
+- [ ] "regular/irregular" bukan "reguler"
+- [ ] (+) untuk ada / (-) untuk tidak ada
