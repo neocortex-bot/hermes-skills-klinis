@@ -211,21 +211,6 @@ Extremities: warm extremities, no edema, CRT <2 seconds
 
 Section ini untuk menterjemahkan assessment / diagnosis dari Bahasa Indonesia ke Bahasa Inggris.
 
-**Format baku (3 codeblock terpisah — output selalu 3 block):**
-
-````
-```
-
-**Assessment (English):**
-
-[Diagnosis 1]
-[Diagnosis 2]
-...
-
-```
-
-````
-
 ### ⛔ CHECKLIST ASSESSMENT
 
 - [ ] Diawali header: `**Assessment (English):**`
@@ -254,20 +239,6 @@ Section ini untuk menterjemahkan assessment / diagnosis dari Bahasa Indonesia ke
 ## Therapy Translation
 
 Section ini untuk menterjemahkan terapi / rencana terapi dari Bahasa Indonesia ke Bahasa Inggris.
-
-**Format baku (3 codeblock terpisah — output selalu 3 block):**
-
-````
-```
-
-**Therapy (English):**
-
-- [Medication] [dose] / [frequency] / [route]
-- ...
-
-```
-
-````
 
 ### ⛔ CHECKLIST THERAPY
 
@@ -318,21 +289,6 @@ Section ini untuk menterjemahkan terapi / rencana terapi dari Bahasa Indonesia k
 
 Section ini untuk menterjemahkan rencana / plan dari Bahasa Indonesia ke Bahasa Inggris.
 
-**Format baku (3 codeblock terpisah — output selalu 3 block):**
-
-````
-```
-
-**Plan (English):**
-
-- [Plan item 1]
-- [Plan item 2]
-- ...
-
-```
-
-````
-
 ### ⛔ CHECKLIST PLAN
 
 - [ ] Diawali header: `**Plan (English):**`
@@ -353,12 +309,10 @@ Section ini untuk menterjemahkan rencana / plan dari Bahasa Indonesia ke Bahasa 
 
 ## Complete Output Format — 3 Codeblocks
 
-Ketika user meminta translate semua (assessment + terapi + plan), output berupa **3 codeblock terpisah**:
+Ketika user meminta translate semua (assessment + terapi + plan), output berupa **3 codeblock terpisah**. Tidak ada header di dalam codeblock.
 
 ````
 ```
-
-**Assessment (English):**
 
 [Diagnosis list — terjemahan]
 
@@ -367,8 +321,6 @@ Ketika user meminta translate semua (assessment + terapi + plan), output berupa 
 
 ```
 
-**Therapy (English):**
-
 [Obat list — terjemahan]
 
 ```
@@ -376,14 +328,12 @@ Ketika user meminta translate semua (assessment + terapi + plan), output berupa 
 
 ```
 
-**Plan (English):**
-
 [Plan list — terjemahan]
 
 ```
 ````
 
-Setiap codeblock dipisah baris kosong agar rapi. Ini adalah format baku untuk output translate assessment + therapy + plan.
+Setiap codeblock dipisah baris kosong agar rapi. Header seperti "**Assessment (English):**" ditulis di luar codeblock jika perlu.
 
 ---
 
