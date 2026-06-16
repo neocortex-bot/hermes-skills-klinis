@@ -339,3 +339,14 @@ Tabe dokter, selanjutnya mohon arahannya dokter, terima kasih dokter.
 - Jangan singkat nama DPJP
 - Diagnosis rujukan harus dipanjangkan
 - Setiap ada koreksi/kesalahan → CENTANG ULANG SEMUA CHECKLIST
+
+### IMAGE INPUT ROUTING (foto hasil lab, foto EKG, foto echo)
+Skill ini menerima input foto (triggers: "foto hasil lab", "foto"). **Jangan gunakan default model (DeepSeek) untuk memproses gambar — DeepSeek text-only.**
+
+Wajib routing ke `mimo-vision` skill untuk semua image input:
+1. **Foto hasil lab** → `python3 ~/.hermes/scripts/mimo-vision.py <path> "Extract all text and numerical values from this lab result"`
+2. **Foto EKG** → `python3 ~/.hermes/scripts/mimo-vision.py <path> "Describe this ECG: rhythm, rate, axis, intervals, ST-T changes"`
+3. **Foto echo** → `python3 ~/.hermes/scripts/mimo-vision.py <path> "Describe this echocardiogram in detail"` lalu lanjut ke `echocardiography-igd`
+4. **Foto resep/terapi** → `python3 ~/.hermes/scripts/mimo-vision.py <path> "Extract all text: medications, doses, routes, frequency"`
+
+Output Mimo jadi INPUT untuk section terkait di SOAP. Jangan pernah coba describe gambar langsung dari default model.
