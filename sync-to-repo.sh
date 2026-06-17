@@ -6,8 +6,8 @@ REPO_DIR="/tmp/hermes-skills-klinis"
 SKILLS_SRC="$HOME/.hermes/skills"
 
 # Copy skills-klinis structure
-mkdir -p "$REPO_DIR/klinis"
-rsync -a --delete "$SKILLS_SRC/clinical/" "$REPO_DIR/klinis/" 2>/dev/null || true
+mkdir -p "$REPO_DIR/skills/clinical"
+rsync -a --delete "$SKILLS_SRC/clinical/" "$REPO_DIR/skills/clinical/" 2>/dev/null || true
 
 # Check if there are existing klinis dirs to merge
 if [ -d "$SKILLS_SRC/clinical" ]; then
