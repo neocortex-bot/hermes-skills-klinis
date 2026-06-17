@@ -14,7 +14,7 @@ triggers:
 
 Satu prompt mencakup semua section. Output berupa 6 blok terpisah dengan urutan tetap:
 
-1. **Identitas** (plain text, Label : Value format)
+1. **Identitas** (codeblock, Label : Value format)
 2. **Anamnesis** (codeblock, narasi dengan (+)/(-))
 3. **Physical Examination** (codeblock)
 4. **Assessment** (codeblock, tanpa header, tanpa bullet)
@@ -26,7 +26,7 @@ Setiap blok dipisah baris kosong. Header bisa ditulis di luar codeblock.
 ## Urutan Lengkap Output
 
 ### Blok 1 - Identitas
-(Plain text, tidak di codeblock)
+(Codeblock — urutan tetap: Name, Age, DOB, Address, MR, Date of Admission, DPJP, baris kosong, lalu Referral narasi)
 
 ```
 Name    : Mr./Mrs. [Initial]
@@ -36,22 +36,22 @@ Address : [City/Domicile]
 MR      : [MRN]
 Date of Admission : [DD-MM-YYYY]
 DPJP    : [dr. Name]
+
+Patient Reffered From [RS] with [diagnosis]
 ```
 
-Referral (opsional, bila ada):
-```
-Referral : [RS] with [diagnosis]
-```
+- Referral: baris terakhir, 1 baris kosong setelah DPJP, dalam narasi (bukan Label : Value), diawali "Patient Reffered From"
+- Jika tidak ada rujukan, SKIP baris Referral dan baris kosong sebelumnya (tidak perlu ditulis)
 
 ### Blok 2 - Anamnesis
 (Codeblock)
 
 ```
-**Chief complaint:** ...
+Chief complaint: ...
 
 [Paragraf narasi lengkap dengan (+)/(-)]
 
-**Coronary Risk Factors:**
+Coronary Risk Factors:
 - History of hypertension: ...
 - History of diabetes mellitus: ...
 - Smoking history: ...
@@ -84,8 +84,8 @@ CAD2VD ...
 (Codeblock, tanpa header, tanpa bullet)
 
 ```
-IVFD NaCl 0.9% 500 cc / 24h / IV
-Aspilet 80 mg / 24h / oral
+IVFD NaCl 0.9% 500 cc/24h/IV
+Aspilet 80 mg/24h/oral
 ...
 ```
 
@@ -112,10 +112,12 @@ Monitor signs of bleeding
 - [ ] MR: nomor RM
 - [ ] Date of Admission: DD-MM-YYYY
 - [ ] DPJP: sesuai input
-- [ ] Referral: hanya bila ada info rujukan
+- [ ] Referral: baris narasi terakhir — "Patient Reffered From [RS] with [diagnosis]" — 1 baris kosong setelah DPJP, di dalam codeblock yang sama
+- [ ] Jika tidak ada rujukan: SKIP baris Referral dan baris kosongnya (jangan tulis kosong)
+- [ ] **Identitas di dalam codeblock — bukan plain text**
 
 ### B. Anamnesis
-- [ ] **Chief complaint:** bold
+- [ ] Chief complaint: (plain text, tanpa bold markdown)
 - [ ] Chest pain triple criteria (lokasi, karakter, penjalaran)
 - [ ] Onset + durasi + skala nyeri NRS
 - [ ] Perubahan skala: "Upon arrival ..."
@@ -131,7 +133,7 @@ Monitor signs of bleeding
 - [ ] Obat rutin (nama + dosis)
 - [ ] Terapi RS rujukan (bila ada)
 - [ ] Obat RS rujukan: injeksi dosis/rute, oral cukup sediaan
-- [ ] **Coronary Risk Factors:** bold
+- [ ] Coronary Risk Factors: (plain text, tanpa bold markdown)
 - [ ] Hipertensi (+)/(-) + keterangan
 - [ ] DM (+)/(-) + keterangan
 - [ ] Merokok (since, jumlah/hari)
@@ -164,7 +166,8 @@ Monitor signs of bleeding
 - [ ] Tanpa bullet (-)
 - [ ] 1 baris per obat
 - [ ] IVFD di baris pertama
-- [ ] Format: [Obat] [dosis] / [frekuensi] / [rute]
+- [ ] Format: [Obat] [dosis] / [frekuensi] / [rute] — spasi sebelum & sesudah / (contoh: NaCl 0.9% 500 cc / 24h / IV)
+- [ ] ISDN khusus: "[dosis]/SL if chest pain" (bukan /sos/SL)
 - [ ] /24h/ sekali sehari, /12h/ dua kali sehari
 - [ ] /sos untuk (kp)
 - [ ] Dosis desimal pakai titik
@@ -191,11 +194,11 @@ Output diawali dengan judul section, kemudian isi anamnesis dalam Bahasa Inggris
 
 **Format baku:**
 ```
-**Chief complaint:** [Keluhan utama singkat]
+Chief complaint: [Keluhan utama singkat]
 
 [Paragraf narasi lengkap — pakai (+) dan (-) untuk efisiensi]
 
-**Coronary Risk Factors:**
+Coronary Risk Factors:
 - History of hypertension: ...
 - History of diabetes mellitus: ...
 - Smoking history: ...
@@ -205,10 +208,10 @@ Output diawali dengan judul section, kemudian isi anamnesis dalam Bahasa Inggris
 ## ⛔ CHECKLIST WAJIB ⛔
 
 ### 1. STRUKTUR
-- [ ] Diawali dengan **Chief complaint:** (bold)
+- [ ] Diawali dengan Chief complaint: (plain text, tanpa bold)
 - [ ] Baris baru setelah Chief complaint
 - [ ] Paragraf narasi berisi semua informasi S (Subjective) dari anamnesis asli
-- [ ] **Coronary Risk Factors:** (bold)
+- [ ] Coronary Risk Factors: (plain text, tanpa bold)
 - [ ] Setiap faktor risiko di bullet list dengan format "- "
 
 ### 2. KONTEN ANAMNESIS
@@ -276,7 +279,7 @@ Other complaints: Fever (+), cough (+), bowel movements within normal limits.
 ## Contoh Output (Gold Standard)
 
 ```
-**Chief complaint:** Chest Pain
+Chief complaint: Chest Pain
 
 The patient presented with chest pain that had worsened over the past 3 hours (May 21, 2026, at 05:00) prior to admission to the Emergency Department of RSUD Gowa, with a pain scale of NRS 8/10. Upon arrival at the PJT Emergency Department, with symptom onset of 8 hours (May 21, 2026, at 10:00), the pain scale was NRS 5/10. The chest pain radiated to the left arm and lasted for more than 20 minutes. Diaphoresis (+) and nausea (+), without vomiting. There was history of chest pain (-). Shortness of breath (-). Dyspnea on exertion (-), paroxysmal nocturnal dyspnea (-), and orthopnea (-). There was no prior history of shortness of breath. Previous history of palpitations (-).
 
@@ -284,7 +287,7 @@ Other complaints included no fever, occasional cough, reddish-colored urine sinc
 
 The patient was referred from RSUD Gowa and had already received loading doses of Aspilet 2 tablets, clopidogrel 300 mg, and atorvastatin 40 mg.
 
-**Coronary Risk Factors:**
+Coronary Risk Factors:
 - History of hypertension, not routinely taking medicine
 - No history of diabetes mellitus
 - No history of smoking
@@ -447,15 +450,30 @@ Section ini untuk menterjemahkan terapi / rencana terapi dari Bahasa Indonesia k
 | /SL | /SL (sublingual) |
 | /kp | /sos (as needed) |
 | (kp) | (sos) |
-| 24 jam | 24 hours — tetapi tetap pakai format /24h untuk frekuensi |
+| 24 jam | /24h |
 | /24 jam/ | /24h/ |
 | H-1 | H-1 (unfractionated heparin protocol) |
 
-**Format frekuensi konsisten:**
-- /24h/ — untuk sekali sehari
-- /12h/ — untuk dua kali sehari
-- /8h/ — untuk tiga kali sehari
-- /6h/ — untuk empat kali sehari
+**Format penulisan obat — rapat tanpa spasi sekitar `/`:**
+
+```
+Contoh BENAR:
+IVFD NaCl 0.9% 500 cc/24h/IV
+Aspilet 80 mg/24h/oral
+Heparin 7 IU/kgBB bolus IV then 12 IU/kgBB/h/SP
+ISDN 5 mg/SL if chest pain     ← khusus ISDN: "/SL if chest pain" (bukan /sos/)
+Laxadin 30 cc/24h/oral
+
+Contoh SALAH (jangan):
+IVFD NaCl 0.9% 500 cc / 24h / IV
+Aspilet 80 mg / 24h / oral
+ISDN 5 mg / sos / SL
+```
+
+- Spasi hanya antara nama obat dan dosis, lalu rapat sampai akhir
+- Format: `[Obat] [dosis]/[frekuensi]/[rute]`
+- `/24h/` sekali sehari, `/12h/` dua kali sehari, `/8h/` tiga kali sehari, `/6h/` empat kali sehari
+- ISDN khusus: `[dosis]/SL if chest pain` (bukan /sos/)
 
 ---
 
@@ -467,16 +485,18 @@ Section ini untuk menterjemahkan rencana / plan dari Bahasa Indonesia ke Bahasa 
 
 - [ ] Header di luar codeblock — tidak ada di dalam codeblock
 - [ ] Format per baris tanpa bullet `-`, 1 baris per plan item
+- [ ] "Konsul TS [Spesialisasi]" → "Consult to [Specialization] Subdivision" — lowercase subdivision name (e.g. Endocrinology, Cardiology)
 
 ### Aturan Terjemahan Istilah Plan
 
 | Indonesia | Inggris |
-|---|---|
+|---|---|---|
 | Monitoring Tanda vital dan hemodinamik | Monitor vital signs and hemodynamics |
 | Monitoring tanda-tanda perdarahan | Monitor signs of bleeding |
 | Cek DR, UR, Cr post rehidrasi | Check DR, UR, Cr post rehydration |
 | Cek Profil Lipid | Check Lipid Profile |
 | Pindah Perawatan CVCU | Transfer to CVCU for further care |
+| Konsul TS [Spesialisasi] | Consult to [Specialization] Subdivision |
 
 ---
 

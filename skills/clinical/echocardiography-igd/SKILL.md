@@ -14,6 +14,7 @@ triggers:
 - **Parameter wajib yang tidak diisi → tulis `...`** — contoh: `Mild Tricuspid Regurgitation (Vmax ... m/s, MaxPG ... mmHg)` — nanti diisi manual
 - **JANGAN pakai pipe `|`** di output laporan.
 - **Interpretasi sendiri** — jangan copas mentah dari data pakboss. Contoh: LVIDd 3.9 cm itu normal → tulis "Normal Cardiac Dimensions". LA 4.3 cm itu dilatasi → tulis "LA dilatation". Dll.
+- **Image input routing (foto echo):** Jika pakboss mengirim **foto echo** (bukan teks form), jangan coba describe dengan default model (DeepSeek text-only). Gunakan `mimo-vision` skill: `python3 ~/.hermes/scripts/mimo-vision.py <path> "Describe this echocardiogram in detail — chambers, valves, Doppler, function"`. Output Mimo dijadikan data input untuk form isian echo di bawah ini.
 - **Yang tidak perlu diisi pakboss** (kalkulasi otomatis dari app hemodinamik atau dari TTV):
   - MAP, LV SV, LV CO, eRAP, SVR, BSA, CI, CPO, CPI, Collapsibility Index, Distensibility Index
   - PCWP (kalkulasi otomatis jika E/A, E Septal, dan E Lateral tersedia — rumus Nagueh)
@@ -88,10 +89,11 @@ Saat pakboss menyebut grade katup (Mild/Moderate/Severe MR/AR/PR/TR), jabarkan d
 
 ## Interpretasi Parameter Echo
 
-### Dimensi Jantung (interpretasi otomatis)
-- LVIDd normal: 3.5-5.4 cm → tulis "Normal Cardiac Dimensions" jika dalam rentang.
-- LA mayor normal: < 6.1 cm → jika ≥ 6.1 tulis "LA dilatation".
-- LA minor normal: < 4.5 cm → jika ≥ 4.5 tulis "LA dilatation".
+### Dimensi Jantung (interpretasi otomatis) — WAJIB DIBACA TANPA TERKECUALI
+- LVIDd normal: 3.5-5.4 cm → jika dalam rentang tulis di parameter tanpa label dilatasi.
+- **LA mayor** normal: **< 6.1 cm** (bukan 4.5!) → jika ≥ 6.1 tulis "LA dilatation". Jika < 6.1 → **BUKAN dilatasi**.
+- **LA minor** normal: **< 4.5 cm** → jika ≥ 4.5 tulis "LA dilatation".
+- **WAJIB:** LA mayor dan LA minor HARUS selalu ditulis di parameter, meskipun normal. Format: `LA mayor ... cm, LA minor ... cm`
 - RA area normal: < 18 cm² → jika ≥ 18 tulis "RA dilatation".
 - RVDB normal: < 4.2 cm → jika ≥ 4.2 tulis "RV dilatation".
 - Jika semua dimensi dalam batas normal: **"Normal Cardiac Dimensions"** — tanpa parameter dalam kurung.
@@ -120,9 +122,10 @@ Saat pakboss menyebut grade katup (Mild/Moderate/Severe MR/AR/PR/TR), jabarkan d
 2. **Trombus/temuan lain** — baris sendiri interpretasi tambahan terpisah
 3. **LV & RV function** — baris sendiri tanpa bullet: `Normal LV Systolic Function, EF ...% (TEICH)`
 4. **Cardiac Valves** — section tanpa indentasi, tiap katup baris sendiri tanpa bullet
-5. **Dimensi + Geometri jadi SATU baris** — tulis `RA dilatation, RV dilatation with LV-D shaped (RA area ... cm², RVDB ... cm, LA mayor ... cm, LA minor ... cm, LVMI ... g/m², RWT ...)` — jangan pisah dimensi dan geometri. Bila semua normal tulis `Normal Cardiac Dimensions` saja tanpa parameter kurung
+5. **Dimensi + Geometri jadi SATU baris** — tulis `RA dilatation, RV dilatation with LV-D shaped (RA area ... cm², RVDB ... cm, LA mayor ... cm, LA minor ... cm, LVMI ... g/m², RWT ...)` — jangan pisah dimensi dan geometri. Bila semua normal tulis `Normal Cardiac Dimensions` saja tanpa parameter kurung. **WAJIB:** LA mayor dan LA minor selalu ditulis di parameter terlepas normal atau tidak. Jika LA minor tidak disebut pakboss, tulis `LA minor ... cm`
 6. **Pericardial effusion** — `No pericardial effusion` atau format efusi lengkap (PLAX/PSAX/Apical/Subcostal + tamponade signs)
 
+**Template output:**
 ```
 Echocardiography Bedside (tanggal):
 
@@ -143,8 +146,9 @@ Tricuspid: ...
 RA dilatation, RV dilatation with LV-D shaped (RA area ... cm², RVDB ... cm, LA mayor ... cm, LA minor ... cm, LVMI ... g/m², RWT ...)
 
 No pericardial effusion
+```
 
-LUS (Lung Ultrasound) — WAJIB selalu dicantumkan
+### LUS (Lung Ultrasound) — WAJIB selalu dicantumkan
 
 **Prinsip:** LUS selalu ada di laporan echo, **di bawah Echo Hemodinamik** (bukan di antara Bedside dan Hemodinamik).
 - Jika pakboss **tidak menyebut** B line / efusi pleura → artinya normal: A line (+), B line (-), pleural effusion (-)
@@ -156,14 +160,10 @@ LUS (Lung Ultrasound) — WAJIB selalu dicantumkan
 Lung US:
 Lung sliding (+), pleural line irregular, A line (+), B line (-), pleural effusion (-)
 ```
-
 Sesuaikan jika pakboss sebut temuan.
 
-**PENTING — Format interpretasi:** tulis kelainan/kondisi DULU, lalu parameter dalam kurung. Contoh:
-- "Concentric remodeling (LVMI 70.15 g/m², RWT 0.59)" — bukan "LV Geometry: Concentric remodeling\n(LVMI..."
-- "Grade I LV Diastolic Dysfunction (E/A 0.86, E' Med 11 cm/s, E' Lat 8 cm/s)" — bukan pakai titik dua baris baru
-- "Normal Cardiac Dimensions (LVIDd 3.9 cm, LA mayor 4.3 cm, ...)"
-
+### Echo Hemodinamik — Format output
+```
 Echo Hemodinamik:
 TD .../... mmHg
 MAP ... mmHg
@@ -179,10 +179,12 @@ BSA ... m²
 CI ... L/min/m²
 CPO ... watt
 CPI ... watt/m²
-
-Lung US:
-Lung sliding (+), pleural line irregular, A line (+), B line (-), pleural effusion (-)
 ```
+
+**PENTING — Format interpretasi:** tulis kelainan/kondisi DULU, lalu parameter dalam kurung. Contoh:
+- "Concentric remodeling (LVMI 70.15 g/m², RWT 0.59)" — bukan "LV Geometry: Concentric remodeling\n(LVMI..."
+- "Grade I LV Diastolic Dysfunction (E/A 0.86, E' Med 11 cm/s, E' Lat 8 cm/s)" — bukan pakai titik dua baris baru
+- "Normal Cardiac Dimensions (LVIDd 3.9 cm, LA mayor 4.3 cm, ...)"
 
 **Aturan format:**
 - Baris kosong antara blok Echo Bedside dan blok Echo Hemodinamik
@@ -246,6 +248,25 @@ Lung sliding (+), pleural line irregular, A line (+), B line (-), pleural effusi
 ```
 
 ---
+
+## ⛔ WAJIB — Kirim laporan dalam CODE BLOCK
+
+Setiap kali mengirim laporan echo ke pakboss, laporan HARUS dikirim dalam **code block** (``` ```).
+
+Bukan format biasa — gunakan triple backtick agar laporan echo tampil rapi di chat.
+
+Contoh cara kirim:
+```
+Echocardiography Bedside (14-06-2026):
+...
+```
+BUKAN seperti ini:
+Echocardiography Bedside (14-06-2026):
+...
+
+**Larangan keras:**
+- Jangan pakai bullet points / list markdown (`- ` atau `1. `) untuk konten laporan echo — laporan adalah plain text dalam code block.
+- Jangan kirim laporan sebagai teks biasa tanpa code block.
 
 ## ⛔ GOLD STANDARD CHECKLIST
 

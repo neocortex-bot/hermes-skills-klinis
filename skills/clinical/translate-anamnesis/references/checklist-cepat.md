@@ -1,13 +1,14 @@
 # Checklist Cepat - Translate Semua Section
 
 ## A. Identitas
-- [ ] Label: Name, Age, Date of birth, Address, MR, Date of Admission, DPJP
+- [ ] Label: Name, Age, DOB, Address, MR, Date of Admission, DPJP
 - [ ] Kosong jika tidak ada info
 - [ ] Name: Mr./Mrs. + huruf depan
-- [ ] Referral hanya bila ada rujukan
+- [ ] Referral: baris narasi terakhir ("Patient Reffered From ..."), 1 baris kosong setelah DPJP
+- [ ] **Di dalam codeblock — bukan plain text**
 
 ## B. Anamnesis
-- [ ] Chief complaint bold
+- [ ] Chief complaint plain text (tanpa bold)
 - [ ] Chest pain triple criteria
 - [ ] Onset + durasi + NRS
 - [ ] Diaphoresis/Nausea/Vomiting (+)/(-)
@@ -16,7 +17,7 @@
 - [ ] Other complaints (+)/(-)
 - [ ] Riwayat PCI (tahun, pembuluh, stent)
 - [ ] Obat rutin
-- [ ] Coronary Risk Factors bold
+- [ ] Coronary Risk Factors plain text (tanpa bold)
 - [ ] HT/DM/Merokok/PJ Keluarga
 
 ## C. Physical Examination
@@ -36,12 +37,14 @@
 - [ ] Tanpa header & bullet di codeblock
 - [ ] 1 baris per obat
 - [ ] IVFD baris pertama
-- [ ] Format dosis/frekuensi/rute
+- [ ] Format: dosis/frekuensi/rute — rapat tanpa spasi sekitar /
+- [ ] ISDN khusus: "dosis/SL if chest pain" (bukan /sos/SL)
 
 ## F. Plan
 - [ ] Tanpa header & bullet di codeblock
 - [ ] 1 baris per plan
 - [ ] Istilah teknis tetap
+- [ ] "Konsul TS [X]" → "Consult to [X] Subdivision"
 
 ## G. Bahasa
 - [ ] (+) / (-)
