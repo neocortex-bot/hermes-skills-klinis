@@ -14,6 +14,7 @@ triggers:
 - **Parameter wajib yang tidak diisi → tulis `...`** — contoh: `Mild Tricuspid Regurgitation (Vmax ... m/s, MaxPG ... mmHg)` — nanti diisi manual
 - **JANGAN pakai pipe `|`** di output laporan.
 - **Interpretasi sendiri** — jangan copas mentah dari data pakboss. Contoh: LVIDd 3.9 cm itu normal → tulis "Normal Cardiac Dimensions". LA 4.3 cm itu dilatasi → tulis "LA dilatation". Dll.
+- **Image input routing (foto echo):** Jika pakboss mengirim **foto echo** (bukan teks form), jangan coba describe dengan default model (DeepSeek text-only). Gunakan `mimo-vision` skill: `python3 ~/.hermes/scripts/mimo-vision.py <path> "Describe this echocardiogram in detail — chambers, valves, Doppler, function"`. Output Mimo dijadikan data input untuk form isian echo di bawah ini.
 - **Yang tidak perlu diisi pakboss** (kalkulasi otomatis dari app hemodinamik atau dari TTV):
   - MAP, LV SV, LV CO, eRAP, SVR, BSA, CI, CPO, CPI, Collapsibility Index, Distensibility Index
   - PCWP (kalkulasi otomatis jika E/A, E Septal, dan E Lateral tersedia — rumus Nagueh)
