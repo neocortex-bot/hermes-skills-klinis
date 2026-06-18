@@ -11,7 +11,8 @@ triggers:
 
 ## Prinsip
 - **Hanya parameter yang diisi** — bila pakboss kirim data echo, hanya parameter yang disebutkan/diisi yang dicantumkan. Jika cuma "Mild MR" ya tulis Mild MR saja, jangan tambahkan parameter lain.
-- **Parameter wajib yang tidak diisi → tulis `...`** — contoh: `Mild Tricuspid Regurgitation (Vmax ... m/s, MaxPG ... mmHg)` — nanti diisi manual
+- **Parameter tidak diisi → OMIT (jangan pakai `...`)** — untuk parameter yang tidak disebut pakboss, jangan cantumkan sama sekali. Jangan tulis `...` sebagai placeholder. Pengecualian: HANYA saat pakboss mengisi form isian bernomor dan sengaja mengosongkan parameter (menunggu diisi manual di rumah sakit), barulah `...` diperbolehkan.
+- **Echo dari soap lama → JANGAN pakai `...`** — saat echo dikopi dari soap sebelumnya (bukan dari form isian pakboss), semua parameter yang tidak disebut di soap lama harus DIHAPUS. Jangan tulis `(Vmax ... m/s, MaxPG ... mmHg)` atau `(LA mayor ... cm, LA minor ... cm)` — cukup tulis grade abnormality-nya saja tanpa placeholder.
 - **JANGAN pakai pipe `|`** di output laporan.
 - **Interpretasi sendiri** — jangan copas mentah dari data pakboss. Contoh: LVIDd 3.9 cm itu normal → tulis "Normal Cardiac Dimensions". LA 4.3 cm itu dilatasi → tulis "LA dilatation". Dll.
 - **Image input routing (foto echo):** Jika pakboss mengirim **foto echo** (bukan teks form), jangan coba describe dengan default model (DeepSeek text-only). Gunakan `mimo-vision` skill: `python3 ~/.hermes/scripts/mimo-vision.py <path> "Describe this echocardiogram in detail — chambers, valves, Doppler, function"`. Output Mimo dijadikan data input untuk form isian echo di bawah ini.
@@ -70,7 +71,7 @@ Saat pakboss menyebut grade katup (Mild/Moderate/Severe MR/AR/PR/TR), jabarkan d
 | Mitral | MS | `[Grade] Mitral Stenosis due to ... (MVA planimetry ... cm², MVA PHT ... cm², Mean PG ... mmHg, Wilkins Score ...)` — Wilkins disebutkan (cth 2-2-2-1) |
 | Aorta | AS | `[Grade] Aortic Stenosis due to ... (AV Vmax ... m/s, mean PG ... mmHg, AVA continuity eq ... cm², AVA Planimetri ... cm²)` — parameter exact bukan rentang |
 
-**Pengecualian:** Jika pakboss hanya kirim grade tanpa angka parameter, tulis grade + jelaskan dari parameter yang ada saja.
+**Pengecualian:** Jika pakboss hanya kirim grade tanpa angka parameter, tulis grade + jelaskan dari parameter yang ada saja. **Jika echo dari soap lama (bukan form isian pakboss)**: jangan tulis parameter kurung sama sekali — cukup grade abnormality saja, misal "Mild Aortic Regurgitation" tanpa "(PHT ... ms, ...)". `...` hanya untuk form isian bernomor yang sengaja dikosongkan pakboss.
 
 **Aturan TR + PH Probability:**
 - TR Mild → `Mild Tricuspid Regurgitation (Vmax ... m/s, MaxPG ... mmHg)` — tanpa PH probability
@@ -93,7 +94,7 @@ Saat pakboss menyebut grade katup (Mild/Moderate/Severe MR/AR/PR/TR), jabarkan d
 - LVIDd normal: 3.5-5.4 cm → jika dalam rentang tulis di parameter tanpa label dilatasi.
 - **LA mayor** normal: **< 6.1 cm** (bukan 4.5!) → jika ≥ 6.1 tulis "LA dilatation". Jika < 6.1 → **BUKAN dilatasi**.
 - **LA minor** normal: **< 4.5 cm** → jika ≥ 4.5 tulis "LA dilatation".
-- **WAJIB:** LA mayor dan LA minor HARUS selalu ditulis di parameter, meskipun normal. Format: `LA mayor ... cm, LA minor ... cm`
+- **WAJIB:** LA mayor dan LA minor HARUS selalu ditulis di parameter, meskipun normal. Format: `LA mayor ... cm, LA minor ... cm` — **HANYA jika dari form isian pakboss**. Jika dari soap lama, omit jika tidak disebut.
 - RA area normal: < 18 cm² → jika ≥ 18 tulis "RA dilatation".
 - RVDB normal: < 4.2 cm → jika ≥ 4.2 tulis "RV dilatation".
 - Jika semua dimensi dalam batas normal: **"Normal Cardiac Dimensions"** — tanpa parameter dalam kurung.
@@ -264,9 +265,7 @@ BUKAN seperti ini:
 Echocardiography Bedside (14-06-2026):
 ...
 
-**Larangan keras:**
-- Jangan pakai bullet points / list markdown (`- ` atau `1. `) untuk konten laporan echo — laporan adalah plain text dalam code block.
-- Jangan kirim laporan sebagai teks biasa tanpa code block.
+**Larangan keras:**\n- Jangan pakai bullet points / list markdown (`- ` atau `1. `) untuk konten laporan echo — laporan adalah plain text dalam code block.\n- Jangan kirim laporan sebagai teks biasa tanpa code block.\n- **JANGAN pakai `...` di echo dari soap lama** — user akan koreksi "kenapa masih ada ... pada echo". Hanya untuk form isian bernomor pakboss.
 
 ## ⛔ GOLD STANDARD CHECKLIST
 
