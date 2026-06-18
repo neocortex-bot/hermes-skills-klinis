@@ -15,6 +15,11 @@ triggers:
 **SEBELUM MENGIRIM SOAP, WAJIB CENTANG SEMUA ITEM DI BAWAH INI SATU PER SATU**
 **SETIAP ADA KESALAHAN/KOREKSI, WAJIB CENTANG ULANG SEMUA CHECKLIST**
 
+### ⛔ CHECKLIST 0 — KIRIM WAJIB CODE BLOCK
+- [ ] **Seluruh SOAP WAJIB dibungkus dalam \`\`\` code block** — jangan kirim sebagai teks biasa
+- [ ] Jangan tanya/konfirmasi dulu ke user — langsung kirim dalam code block
+- [ ] Jika lupa, user akan koreksi "mana code block" — ini PITFALL berat
+
 ---
 
 ## SEGMENTASI SOAP + CHECKLIST
@@ -339,6 +344,9 @@ Tabe dokter, selanjutnya mohon arahannya dokter, terima kasih dokter.
 - Jangan singkat nama DPJP
 - Diagnosis rujukan harus dipanjangkan
 - Setiap ada koreksi/kesalahan → CENTANG ULANG SEMUA CHECKLIST
+- **WAJIB CODE BLOCK** — selalu kirim SOAP dalam \`\`\` code block, jangan teks biasa
+- **Tanggal EKG/lab = hari ini** — tanggal pemeriksaan di header EKG dan lab adalah tanggal SOAP dibuat (hari ini, 18-06-2026 dst), bukan tanggal hasil ditulis/dicetak. Koreksi jika user beri tanggal berbeda.
+- **Soap lama → tanggal baru** — saat membuat SOAP baru dari data soap lama, update semua tanggal ke hari ini kecuali user menentukan sendiri
 
 ### IMAGE INPUT ROUTING (foto hasil lab, foto EKG, foto echo)
 Skill ini menerima input foto (triggers: "foto hasil lab", "foto"). **Jangan gunakan default model (DeepSeek) untuk memproses gambar — DeepSeek text-only.**
