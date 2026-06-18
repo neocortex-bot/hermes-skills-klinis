@@ -44,7 +44,7 @@ Masalah katup (jabarkan di sini):
 - [ ] S' Lateral satuannya **cm/s**
 - [ ] Nama katup di output **lengkap**: MR→Mitral Regurgitation, AR→Aortic Regurgitation, PR→Pulmonary Regurgitation, MS→Mitral Stenosis, AS→Aortic Stenosis. **TR tetap TR**
 - [ ] Hanya parameter yang diisi pakboss yang dicantumkan — jangan tambah-tambah
-- [ ] Parameter yang wajib ada namun tidak diisi → tetap ditulis, nilai diganti **`...`**
+- [ ] Parameter yang tidak diisi → **OMIT (jangan `...`)** — khusus untuk echo dari soap lama, jangan tampilkan parameter tanpa nilai. `...` hanya untuk form isian bernomor yang sengaja dikosongkan pakboss.
 
 ### B. LV FUNCTION (No. 1)
 - [ ] **WAJIB:** Jika pakboss memberi EF Biplane, tulis di baris LV Function setelah EF TEICH: `EF 65% (TEICH), EF 64% (Biplane)`
