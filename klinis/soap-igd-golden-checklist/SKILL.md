@@ -85,6 +85,7 @@ S:
 **Format:**
 ```
 O:
+Compos Mentis
 Tekanan Darah: ... mmHg
 Nadi: ... kali/menit [reguler/ireguler]
 Pernapasan: ... kali/menit
@@ -94,6 +95,9 @@ Saturasi: ...% [room air / on NC ... lpm]
 
 ✅ Checklist:
 - [ ] **O: — TIDAK bold** (polos)
+- [ ] **Compos Mentis** — WAJIB selalu ada di baris PERTAMA TTV, di atas Tekanan Darah
+- [ ] Cocokkan dari input dokter: compos mentis, somnolen, sopor, soporokoma, koma, dll
+- [ ] Jika dokter tulis "Compos mentis selalu di atas tensi" — tulis "Compos Mentis" saja
 - [ ] Tekanan Darah (bukan TD)
 - [ ] Nadi (bukan HR/N)
 - [ ] Pernapasan (bukan RR)
