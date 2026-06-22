@@ -1,66 +1,152 @@
 ---
 name: soap-igd-golden-checklist
-description: GOLDEN CHECKLIST WAJIB — SOAP IGD format baku, tidak boleh ada 1 item pun terlewat. Berlaku untuk semua kasus IGD PJT Jantung. Setiap SOAP WAJIB centang SEMUA item sebelum kirim.
+description: GOLD STANDARD SOAP IGD — dari file dr. Hakim. Pegangan WAJIB.
 triggers:
   - user minta buat SOAP IGD
   - user kasih data pasien baru IGD
   - user koreksi SOAP
-  - user minta golden checklist
-  - user bilang "HARAMM!!" atau "jangan ada terlewat"
+  - user bilang "HARAMM" atau "jangan ada terlewat"
+  - user kirim / refer ke gold-standard-checklist-soap-igd
 ---
 
-# ⛔ SOAP IGD — GOLDEN CHECKLIST WAJIB ⛔
+# SEGMENTASI SOAP + CHECKLIST
 
-## ATURAN UTAMA
-1. **SETIAP SOAP WAJIB dibungkus dalam ``` code block** — jangan pernah kirim sebagai teks biasa
-2. **SETIAP ITEM DI BAWAH INI WAJIB DICENTANG SATU PER SATU** sebelum mengirim
-3. **SETIAP ADA KOREKSI/KESALAHAN → CENTANG ULANG SEMUA CHECKLIST**
-4. **JANGAN KIRIM SEBAGIAN** — SOAP harus lengkap langsung satu kali kirim
-5. **JANGAN KOSONGKAN SECTION** — isi "Menyusul" hanya untuk Echo dan Foto Thorax. Lab dikosongkan (tanpa nilai, tanpa "—", tanpa "...").
-
----
-
-## ⚡ FORMAT LENGKAP — GOLD STANDARD
+## 1. PEMBUKA
+**Format:**
 ```
-Assalamualaikum dokter. Tabe Dokter, mohon izin melaporkan pasien baru di *[LOKASI]* atas nama:
+Assalamualaikum dokter. Tabe Dokter, mohon izin melaporkan pasien baru di *[lokasi]* atas nama:
 
-*Tn./Ny. [NAMA LENGKAP] / [DD-MM-YYYY] / [UMUR] tahun / RM [NOMOR RM]*
+*[Tn./Ny.] [Nama] / [DD-MM-YYYY] / [Umur] tahun / RM [nomor]*
+```
 
+✅ Checklist:
+- [ ] "Assalamualaikum dokter" — bukan "Selamat pagi"
+- [ ] Lokasi di bold
+- [ ] Nama, TTL, umur, RM di bold
+
+## 2. DPJP
+**Format:**
+```
 _DPJP Utama: dr. [Nama], Sp.JP, Subsp. ..._
 _DPJP Tindakan: dr. [Nama], Sp.JP, Subsp. ..._
+```
 
-_Pasien dirujuk dari [RS ASAL] dengan diagnosis [DIAGNOSIS LENGKAP — dipanjangkan, tidak disingkat]_
+✅ Checklist:
+- [ ] Baris terpisah
+- [ ] Pakai underscore italic
+- [ ] DPJP Tindakan hanya jika ada
+- [ ] Bisa juga `_DPJP Utama dan Tindakan_` bila disebutkan hanya 1 orang
 
-*S:*
-- [Keluhan utama: onset, lokasi, karakter 3 kriteria tipikal (retrosternal/nyeri dada kiri, terasa berat/ditekan, menjalar ke lengan kiri/rahang/punggung), penjalaran, skala nyeri NRS]
-- [Gejala penyerta — WAJIB disebut SATU PER SATU: keringat dingin ada/tidak ada, mual muntah ada/tidak ada, sesak nafas ada/tidak ada, berdebar ada/tidak ada, pusing ada/tidak ada]
-- [Riwayat PCI/operasi jantung: tahun, RS, jumlah stent — dengan narasi lengkap bila ada]
-- Pasien telah mendapat terapi dari RS rujukan: [Obat injeksi/subkutan dosis / interval jam / route], [Oral cukup sediaan saja]
+## 3. RUJUKAN
+**Format:**
+```
+_Pasien dirujuk dari [RS] dengan diagnosis [diagnosis]_
+```
+
+✅ Checklist:
+- [ ] Nama RS rujukan
+- [ ] Diagnosis rujukan harus lengkap dituliskan, tidak disingkat. Bila input singkat, wajib panjangkan.
+
+## 4. SUBJEKTIF [S]
+**Format:**
+```
+S:
+- [Keluhan utama: onset, karakter, durasi, lokasi, penjalaran, skala nyeri]
+- [Gejala penyerta: keringat dingin, mual/muntah, sesak, berdebar, pusing] — tulis "tidak ada" jika tidak ada
+- [Riwayat PCI/operasi jantung: tahun, RS, jumlah stent] (bila ada, narasi lengkap)
+- [Riwayat dirujuk: RS, diagnosis, tujuan]
+- Pasien telah mendapat terapi dari RS rujukan: [Obat] [dosis] / [frekuensi] / [rute], ...
+  contoh: Cefotaxim 1 gr / 12 jam / IV, Ranitidin 1 amp / 12 jam / IV, Furosemide 20 mg / 24 jam / IV, Fondaparinux 2.5 mg / 24 jam / subcutan, ...
+  Obat oral cukup sediaannya saja.
 - Faktor Risiko Kardiovaskular:
-  - Riwayat Hipertensi: [sejak kapan, berobat rutin/tidak, obat apa]
-  - Riwayat DM: [sejak kapan, berobat rutin/tidak, obat apa]
-  - Riwayat merokok: [ada/tidak, sejak berapa tahun, berapa batang/hari, sudah berhenti — berapa lama]
-  - Riwayat PJ keluarga: [ada/tidak, sebutkan siapa — hubungan sedarah]
+  - Riwayat Hipertensi: sejak kapan, berobat rutin/tidak, obat apa
+  - Riwayat DM: sejak kapan, berobat rutin/tidak, obat apa
+  - Riwayat merokok: sejak kapan, jumlah, sudah berhenti — berapa lama
+  - Riwayat PJ keluarga: siapa (hubungan sedarah)
+```
 
-*O:*
+✅ Checklist:
+- [ ] **S: — TIDAK bold** (polos)
+- [ ] Onset dan durasi jelas
+- [ ] Karakter nyeri (tipikal/atipikal) disebut, 3 kriteria dipanjangkan
+- [ ] Penjalaran disebut
+- [ ] Gejala penyerta LENGKAP: keringat dingin, mual/muntah, sesak, berdebar, pusing — tiap item "ada"/"tidak ada"
+- [ ] Riwayat PCI: tahun, RS, jumlah stent
+- [ ] Riwayat Hipertensi: sejak kapan, berobat/tidak, obat
+- [ ] Riwayat DM: sejak kapan, berobat/tidak, obat
+- [ ] Riwayat merokok: durasi, jumlah, sudah berhenti — berapa lama
+- [ ] Riwayat PJ keluarga: siapa
+- [ ] Riwayat rujukan: RS asal, diagnosis, lama rawat, terapi
+- [ ] Terapi RS rujukan: narasi paragraf. Injeksi/subkutan: [dosis]/[berapa jam]/[route]. Oral: cukup sediaan.
+
+## 5. OBJEKTIF [O]
+
+### a. TTV
+**Format:**
+```
+O:
+Compos Mentis
 Tekanan Darah: ... mmHg
 Nadi: ... kali/menit [reguler/ireguler]
 Pernapasan: ... kali/menit
 Suhu: ...°C
 Saturasi: ...% [room air / on NC ... lpm]
+```
 
+✅ Checklist:
+- [ ] **O: — TIDAK bold** (polos)
+- [ ] **Compos Mentis** — WAJIB selalu ada di baris PERTAMA TTV, di atas Tekanan Darah
+- [ ] Cocokkan dari input dokter: compos mentis, somnolen, sopor, soporokoma, koma, dll
+- [ ] Jika dokter tulis "Compos mentis selalu di atas tensi" — tulis "Compos Mentis" saja
+- [ ] Tekanan Darah (bukan TD)
+- [ ] Nadi (bukan HR/N)
+- [ ] Pernapasan (bukan RR)
+- [ ] Suhu pakai °C (bukan S)
+- [ ] Saturasi (bukan SpO2)
+- [ ] Nadi: [reguler/ireguler] jika dokter sebut
+- [ ] **TTV tidak disebut dokter → isi dummy normal** (120/80, 80x/mnt, 20x/mnt, 36.5°C, 98% room air)
+- [ ] **DILARANG** tulis "tidak disebutkan"
+
+### b. Pemeriksaan Fisis
+**Format:**
+```
 Mata: konjungtiva tidak anemis, sklera tidak ikterik
-Leher: JVP R+2 cmH2O dalam batas normal
+Leher: JVP ... cmH2O
 Thorax: BP vesikuler, ronkhi tidak ada, wheezing tidak ada
-Jantung: BJ I/II murni reguler, murmur tidak ada
+Jantung: BJ I/II murni, murmur tidak ada
 Abdomen: datar, supel, hepar dan lien tidak teraba, nyeri tekan tidak ada
 Ekstremitas: akral teraba hangat, edema tidak ada, CRT < 2 detik
-[GCS: ... — bila tidak compos mentis]
+```
 
-*EKG [LOKASI] (DD-MM-YYYY):*
-[1 baris sequential: Rhythm, HR .. bpm, reguler/ireguler, Axis, P wave .. sec, PR interval .. sec, QRS Duration .. sec, ST segment/T wave changes]
+✅ Checklist:
+- [ ] "tidak ada"/"ada" — BUKAN (-)/(+)
+- [ ] Bila abnormal, ubah deskripsi yang normal itu
+- [ ] Asumsikan normal jika tidak disebut abnormal
+- [ ] **DILARANG** kata "tidak disebutkan"
+- [ ] **JVP: BACA input dokter** — pakai nilai dokter, bukan asumsi R+2
+- [ ] **Nadi: tanpa [reguler/ireguler]** jika dokter tidak sebut
 
-*Laboratorium [LOKASI] (DD-MM-YYYY):*
+### c. EKG
+**Format:**
+```
+*EKG [lokasi] (DD-MM-YYYY):*
+[1 baris sequential lengkap]
+```
+
+✅ Checklist:
+- [ ] Bold header dengan `* *` (bintang)
+- [ ] Format: Rhythm, HR, reguler/ireguler, Axis, P wave, PR interval, QRS Duration, ST segment/T wave abnormality
+- [ ] JANGAN menyalin singkat dari user
+- [ ] Parameter tak diketahui: default P 0.08, PR 0.16, QRS 0.08
+- [ ] **KONSISTENSI ST-T**: T inverted/ST elevasi → ST segment BUKAN "no significant changes"
+- [ ] AF → tulis "Supraventricular Rhythm"
+- [ ] **Hanya jika ada data/indikasi ACS** — jika tidak, LEWATKAN
+- [ ] **JANGAN** tulis "belum dikerjakan"
+
+### d. Laboratorium
+**Format:**
+```
+*Laboratorium [lokasi] (DD-MM-YYYY):*
 Hemoglobin:
 Leukosit:
 Trombosit:
@@ -72,218 +158,108 @@ GOT/GPT:
 Na/K/Cl:
 Troponin I:
 HBsAg/Anti HCV:
-[Bilirubin Total/Direk — bila perlu]
-[Albumin — bila perlu]
+```
 
-*Foto Thorax [LOKASI] (DD-MM-YYYY):*
+✅ Checklist:
+- [ ] Bold header
+- [ ] Lokasi default: IGD PJT
+- [ ] **SEMUA KOSONG** — jangan isi fiktif, jangan "—", jangan "..."
+- [ ] **Hanya jika ada ≥ 1 hasil lab** — jika tidak, LEWATKAN
+- [ ] **JANGAN** tulis "belum dikerjakan"
+
+### e. Foto Thorax
+**Format:**
+```
+*Foto Thorax [lokasi] (DD-MM-YYYY):*
 Menyusul
+```
 
+✅ Checklist:
+- [ ] **Hanya jika user sebut foto thorax** — jika tidak, LEWATKAN
+- [ ] **JANGAN** tulis "belum dikerjakan"
+
+### f. Echocardiography
+**Format:**
+```
 *Echocardiography (DD-MM-YYYY):*
 Menyusul
+```
 
+✅ Checklist:
+- [ ] **Hanya jika user sebut echo** — jika tidak, LEWATKAN
+- [ ] **JANGAN** tulis "belum dikerjakan"
+
+## 6. ASSESSMENT [A]
+**Format:**
+```
 *Mohon izin kami assess dengan:*
-- [Diagnosis utama + stratifikasi risiko lengkap]
+- [Diagnosis 1 (stratifikasi risiko)]
+- [Diagnosis tambahan]
+```
 
+✅ Checklist:
+- [ ] Bold header
+- [ ] NSTEMI: NSTEMI Very high risk (GRACE Score .. point ..% probability of death, ARC-HBR .. mayor .. minor)
+- [ ] STEMI: STEMI [regio wall] onset [jam] KILLIP [I-IV] (TIMI Score .. Estimated 30 day mortality ..%, ARC HBR .. Major .. Minor)
+- [ ] Diagnosis dipanjangkan (tidak disingkat)
+
+## 7. TERAPI [P1]
+**Format:**
+```
 *Mohon izin kami terapi dengan:*
-- [Obat] [dosis]/[frekuensi]/[rute]
+- [Obat] [dosis] / [frekuensi] / [rute]
+```
 
+✅ Checklist:
+- [ ] Bold header
+- [ ] Format `[Obat] [dosis] / [frekuensi] / [rute]` — KONSISTEN
+- [ ] IVFD di baris PERTAMA
+- [ ] **Frekuensi WAJIB format JAM**: 24 jam, 12 jam, 8 jam, 6 jam — **BUKAN "1x sehari"**, **BUKAN "0-0-1"**, **BUKAN "1x"**
+- [ ] JANGAN "(lanjut)", "(selesai)"
+- [ ] Dosis desimal pakai titik: 1.25 mg (bukan 1,25)
+- [ ] **Obat rutin**: tulis `(obat di pasien)` setelah dosis/frekuensi/rute
+- [ ] **Terapi baru**: tanpa `(obat di pasien)`
+- [ ] **DILARANG mengarang frekuensi/dosis** — hanya data dokter
+- [ ] Per baris per obat dengan "-" bullet
+
+## 8. PLAN [P2]
+**Format:**
+```
 *Plan:*
-- Monitoring tanda vital dan hemodinamik
-- [Pantau urine output dan balance cairan — untuk pasien heart failure]
-- [Plan lain sesuai kasus]
+- [Item plan]
+```
 
+✅ Checklist:
+- [ ] Bold header
+- [ ] "Monitoring tanda vital dan hemodinamik" — baris PERTAMA
+- [ ] "Pantau urine output dan balance cairan" — baris KEDUA (pasien heart failure)
+- [ ] Plan tambahan sesuai kebutuhan
+
+## 9. PENUTUP
+```
 Tabe dokter, selanjutnya mohon arahannya dokter, terima kasih dokter.
 ```
 
----
+## 10. FORMAT UMUM — FINAL CHECK
+- [ ] Seluruh SOAP dibungkus ``` code block
+- [ ] **Bold hanya untuk**: lokasi, nama pasien, EKG, Laboratorium, Foto Thorax, Echocardiography, *Mohon izin assess*, *Mohon izin terapi*, *Plan*
+- [ ] **S: dan O: — TIDAK bold** (polos) — lihat referensi gold-standard-checklist-soap-igd.md item 63 dan 88
+- [ ] Body/data/TTV/deskripsi/fisis **TIDAK bold**
 
-## 📋 GOLDEN CHECKLIST — 100 ITEM
+REFERENSI: File asli gold standard dari dr. Hakim ada di references/gold-standard-checklist-soap-igd.md. Baca itu untuk verifikasi format persisnya.
 
-### A. PEMBUKA — 6 ITEM
-- [ ] **CODE BLOCK**: Seluruh SOAP dibungkus ``` code block
-- [ ] **Pembukaan**: "Assalamualaikum dokter" (BUKAN "Selamat pagi/siang/malam")
-- [ ] **Lokasi bold**: *[Lokasi]* di bold — contoh *IGD PJT Redzone*
-- [ ] **Nama bold**: Nama pasien di bold
-- [ ] **TTL bold**: Tanggal lahir DD-MM-YYYY di bold
-- [ ] **RM bold**: Nomor RM di bold
-
-### B. DPJP — 4 ITEM
-- [ ] **DPJP Utama**: Baris terpisah dengan _underscore italic_
-- [ ] **Nama lengkap DPJP**: Tidak disingkat, gelar lengkap
-- [ ] **DPJP Tindakan**: Baris terpisah bila beda orang dengan DPJP Utama
-- [ ] **Singkat jika 1 orang**: "DPJP Utama dan Tindakan: dr. ..." bila 1 orang saja
-
-### C. RUJUKAN — 3 ITEM
-- [ ] **Header rujukan**: _Pasien dirujuk dari [RS] dengan diagnosis [diagnosis]_
-- [ ] **Nama RS rujukan**: Jelas
-- [ ] **Diagnosis rujukan DIPANJANGKAN**: Tidak disingkat dari input user
-
-### D. SUBJEKTIF [S] — 15 ITEM
-- [ ] **S: bold**: *S:* — format bold
-- [ ] **Keluhan utama**: Onset JELAS (berapa jam/hari sebelum masuk)
-- [ ] **Karakter nyeri TIPIKAL**: 3 kriteria dipanjangkan — retrosternal/nyeri dada kiri, terasa berat/ditekan, menjalar
-- [ ] **Penjalaran**: Disebut (lengan kiri/rahang/punggung/tidak menjalar)
-- [ ] **Skala nyeri**: NRS (0-10)
-- [ ] **Keringat dingin**: Ada/tidak ada — HARUS disebut, TIDAK BOLEH DILEWATKAN
-- [ ] **Mual/muntah**: Ada/tidak ada — HARUS disebut
-- [ ] **Sesak nafas**: Ada/tidak ada, DOE/PND/Orthopneu — HARUS disebut
-- [ ] **Berdebar**: Ada/tidak ada — HARUS disebut
-- [ ] **Pusing**: Ada/tidak ada — HARUS disebut
-- [ ] **Riwayat PCI/operasi jantung**: Tahun, RS, jumlah stent — narasi lengkap bila ada. Bila tidak ada, tulis "tidak ada"
-- [ ] **Terapi RS rujukan**: Injeksi/subkutan [dosis]/[interval jam]/[route]. Oral cukup sediaan. Bila tidak ada rujukan → tulis "Pasien datang langsung"
-- [ ] **Riwayat Hipertensi**: Sejak kapan, berobat rutin/tidak, obat apa. Bila tidak ada → tulis "tidak ada"
-- [ ] **Riwayat DM**: Sejak kapan, berobat rutin/tidak, obat apa. Bila tidak ada → tulis "tidak ada"
-- [ ] **Riwayat merokok/PJ keluarga**: Merokok: ada/tidak, sejak kapan, berapa btg/hari, sudah berhenti — berapa lama. PJ keluarga: ada/tidak, siapa. Bila tidak ada → tulis "tidak ada"
-
-### E. TTV — 8 ITEM
-- [ ] **O: bold**: *O:* — format bold
-- [ ] **Tekanan Darah**: ... mmHg (BUKAN "TD")
-- [ ] **Nadi**: ... kali/menit + [reguler/ireguler] (BUKAN "HR" atau "N")
-- [ ] **Pernapasan**: ... kali/menit (BUKAN "RR")
-- [ ] **Suhu**: ...°C (BUKAN "S")
-- [ ] **Saturasi**: ...% + [room air / on NC ... lpm] (BUKAN "SpO2")
-- [ ] **Format per baris**: Masing-masing TTV di baris sendiri
-- [ ] **Hanya data yang disebut**: Jangan isi nilai fiktif
-
-### F. PEMERIKSAAN FISIS — 9 ITEM
-- [ ] **Mata**: konjungtiva tidak anemis, sklera tidak ikterik (BUKAN (-)/(+))
-- [ ] **Leher**: JVP R+2 cmH2O dalam batas normal (BUKAN (-)/(+))
-- [ ] **Thorax paru**: BP vesikuler, ronkhi tidak ada, wheezing tidak ada (BUKAN (-)/(+))
-- [ ] **Jantung**: BJ I/II murni reguler, murmur tidak ada (BUKAN (-)/(+))
-- [ ] **Abdomen**: datar, supel, hepar dan lien tidak teraba, nyeri tekan tidak ada (BUKAN (-)/(+))
-- [ ] **Ekstremitas**: akral teraba hangat, edema tidak ada, CRT < 2 detik (BUKAN (-)/(+))
-- [ ] **GCS**: Bila tidak compos mentis — sebutkan E4V5M6 atau nilai aktual
-- [ ] **Semua "tidak ada"/"ada"**: BUKAN simbol (-) atau (+)
-- [ ] **Tidak ada kata "tidak disebutkan"**: Asumsikan normal jika tidak diinput abnormal
-
-### G. EKG — 8 ITEM
-- [ ] **Header bold**: *EKG [LOKASI] (DD-MM-YYYY):* — di bold, tanggal sesuai hari SOAP
-- [ ] **1 baris SEQUENTIAL**: Satu baris panjang, bukan bullet
-- [ ] **Rhythm**: Disebut (Sinus/Atrial Fibrilasi/Supraventricular Rhythm/dll)
-- [ ] **HR**: .. bpm
-- [ ] **Reguler/ireguler**: Jelas
-- [ ] **Axis**: Normoaxis/Left Axis Deviation/Right Axis Deviation
-- [ ] **P wave, PR interval, QRS Duration**: Default 0.08, 0.16, 0.08 sec bila tidak diketahui
-- [ ] **KONSISTENSI ST-T**: Jika T inverted / ST elevasi/depresi → ST segment BUKAN "no significant changes"
-- [ ] **Catatan AF**: Irama ditulis "Supraventricular Rhythm" (BUKAN Atrial Fibrillation)
-
-### H. LABORATORIUM — 13 ITEM
-- [ ] **Header bold**: *Laboratorium [LOKASI] (DD-MM-YYYY):* — di bold, tanggal sesuai hari SOAP
-- [ ] **Hemoglobin**: KOSONGKAN (jangan isi fiktif)
-- [ ] **Leukosit**: KOSONGKAN
-- [ ] **Trombosit**: KOSONGKAN
-- [ ] **Neut/Lymp**: KOSONGKAN
-- [ ] **PT/INR/APTT**: KOSONGKAN
-- [ ] **Glukosa Darah Sewaktu**: KOSONGKAN
-- [ ] **Ureum/Kreatinin**: KOSONGKAN
-- [ ] **GOT/GPT**: KOSONGKAN
-- [ ] **Na/K/Cl**: KOSONGKAN
-- [ ] **Troponin I**: KOSONGKAN
-- [ ] **HBsAg/Anti HCV**: KOSONGKAN
-- [ ] **TAMBAHAN**: Bilirubin, Albumin bila perlu — KOSONGKAN
-- [ ] **LARANGAN**: Jangan isi "—", jangan "..." , jangan isi nilai palsu. KOSONGKAN total kolom nilainya
-
-### I. FOTO THORAX — 2 ITEM
-- [ ] **Header bold**: *Foto Thorax [LOKASI] (DD-MM-YYYY):*
-- [ ] **Isi**: "Menyusul" (kecuali hasil sudah ada)
-
-### J. ECHOCARDIOGRAPHY — 3 ITEM
-- [ ] **Header bold**: *Echocardiography (DD-MM-YYYY):*
-- [ ] **Isi**: "Menyusul" atau output skill echocardiography-igd (tanpa asterisk/bold, tanpa bullet "-")
-- [ ] **Tanggal**: Sesuai hari SOAP (kecuali user beri tanggal berbeda)
-
-### K. ASSESSMENT [A] — 5 ITEM
-- [ ] **Header bold**: *Mohon izin kami assess dengan:* — di bold
-- [ ] **STEMI**: [Regio wall] + [Onset] + [KILLIP I-IV] + (TIMI Score .. Estimated 30 day mortality ..%, ARC HBR .. Major .. Minor)
-- [ ] **NSTEMI**: NSTEMI [risk] (GRACE Score .. point ..% probability of death, ARC-HBR .. mayor .. minor)
-- [ ] **Diagnosis tambahan**: Sebutkan bila ada (HHD, CAD, DM, dll)
-- [ ] **Singkatan dipanjangkan**: Semua diagnosis ditulis LENGKAP
-
-### L. TERAPI [P1] — 6 ITEM
-- [ ] **Header bold**: *Mohon izin kami terapi dengan:* — di bold
-- [ ] **IVFD di baris PERTAMA**: Baris terapi paling pertama
-- [ ] **Format OBAT**: `[Obat] [dosis]/[frekuensi]/[rute]` — KONSISTEN semua baris dengan slash
-- [ ] **Dosis desimal pakai TITIK**: 1.25 mg (BUKAN 1,25 mg)
-- [ ] **Jangan tambahan**: "(lanjut)", "(selesai)", "(KP)", atau keterangan lain di belakang obat
-- [ ] **Pisah baris per obat**: Setiap obat di baris terpisah dengan "-" bullet
-
-### M. PLAN [P2] — 3 ITEM
-- [ ] **Header bold**: *Plan:* — di bold
-- [ ] **Monitoring TTV**: "Monitoring tanda vital dan hemodinamik" — baris pertama plan
-- [ ] **Plan tambahan**: Sesuai kasus (EKG per hari, cek APTT, cek lab, konsul, pindah rawat, dll)
-
-### N. PENUTUP — 1 ITEM
-- [ ] **Penutup**: "Tabe dokter, selanjutnya mohon arahannya dokter, terima kasih dokter."
-
----
-
-## 🎯 TEMPLATE ASSESSMENT PER KASUS
-
-### STEMI — kandidat PPCI
-```
-- STEMI [Anteroseptal/Anterior/Inferior/dll] wall, onset [X] jam, KILLIP [I-IV] (TIMI Score .. Estimated 30 day mortality ..%, ARC HBR .. Major .. Minor)
-- CAD
-- [Diagnosis tambahan]
-```
-
-### NSTEMI
-```
-- NSTEMI [Very high risk / High risk / Intermediate risk] (GRACE Score .. point ..% probability of death, ARC-HBR .. mayor .. minor)
-- CAD
-- [Diagnosis tambahan]
-```
-
-### UAP (Unstable Angina Pectoris)
-```
-- UAP [Very high risk / High risk / Intermediate risk] (GRACE Score .. point ..% probability of death, ARC-HBR .. mayor .. minor)
-- CAD
-- [Diagnosis tambahan]
-```
-
-### Acute Heart Failure
-```
-- Acute Heart Failure [tipe: ADHF/De novo/ACS related] + [NYHA III/IV] + (EF: ...%)
-- [Etiologi: CAD/HHD/CM dll]
-- [Diagnosis tambahan]
-```
-
----
-
-## ⛔ PITFALLS FATAL — JANGAN PERNAH
-
-1. **❌ CODE BLOCK TERLUPA** — Hukuman: user akan koreksi "mana code block"
-2. **❌ "Selamat pagi"** — WAJIB "Assalamualaikum dokter"
-3. **❌ TTV pakai "TD", "HR", "RR", "S", "SpO2"** — WAJIB "Tekanan Darah", "Nadi", "Pernapasan", "Suhu", "Saturasi"
-4. **❌ Fisis pakai (-)/(+)** — WAJIB "tidak ada"/"ada"
-5. **❌ Nilai fiktif/halusinasi lab** — Lab WAJIB KOSONG jika belum ada hasil
-6. **❌ EKG dari user ditulis singkat** — WAJIB dipanjangkan ke format sequential 1 baris
-7. **❌ ST-T inconsistency** — T inverted → ST segment BUKAN "no significant changes"
-8. **❌ AF ditulis "Atrial Fibrillation"** — WAJIB "Supraventricular Rhythm"
-9. **❌ Singkatan di diagnosis rujukan** — WAJIB dipanjangkan
-10. **❌ Format obat pakai koma desimal** — WAJIB 1.25 mg (bukan 1,25)
-11. **❌ Obat ditulis "(lanjut)"** — Hanya format [dosis]/[frekuensi]/[rute]
-12. **❌ "tidak disebutkan" di fisis** — WAJIB asumsikan normal
-13. **❌ Dosis pakai spasi berantakan** — Konsisten: [obat] [dosis]/[frekuensi]/[rute]
-14. **❌ Tanggal EKG/Lab pakai tanggal lama** — WAJIB tanggal hari SOAP dibuat, kecuali user tentukan lain
-15. **❌ Kirim SOAP sebagian** — WAJIB lengkap dalam 1 kali kirim
-
----
-
-## ✅ VERIFIKASI AKHIR (SEBELUM KIRIM)
-
-Baca ulang SOAP dan pastikan:
-1. ✅ Pembukaan "Assalamualaikum dokter"
-2. ✅ Lokasi di bold
-3. ✅ Nama/umur/RM di bold
-4. ✅ DPJP italic underscore
-5. ✅ Rujukan: nama RS + diagnosis panjang
-6. ✅ *S:* bold — semua gejala penyerta disebut satu per satu
-7. ✅ *O:* bold — TTV per baris, fisis "tidak ada"
-8. ✅ EKG: 1 baris sequential lengkap + konsistensi ST-T
-9. ✅ Lab: **KOSONG** — jangan isi nilai
-10. ✅ Echo/Foto Thorax: "Menyusul"
-11. ✅ *Mohon izin kami assess dengan:* bold — stratifikasi risiko lengkap
-12. ✅ *Mohon izin kami terapi dengan:* bold — IVFD baris pertama
-13. ✅ *Plan:* bold — Monitoring TTV baris pertama
-14. ✅ Penutup sesuai
-15. ✅ **CODE BLOCK ```** — WAJIB
+## ⛔ PITFALLS FATAL
+1. ❌ BUKAN code block
+2. ❌ "Selamat pagi" — WAJIB "Assalamualaikum dokter"
+3. ❌ TTV pakai TD/HR/RR/S/SpO2
+4. ❌ (-)/(+) di fisis — WAJIB "tidak ada"
+5. ❌ **Mengarang frekuensi/dosis obat — DILARANG**
+6. ❌ **"tidak disebutkan"** di TTV/fisis
+7. ❌ Header EKG/Lab/Foto/Echo kosong — LEWATKAN
+8. ❌ **JVP asumsi R+2** — BACA input dokter
+9. ❌ Nadi ditambah [reguler/ireguler] tanpa data
+10. ❌ AF ditulis "Atrial Fibrillation" — tulis "Supraventricular Rhythm"
+11. ❌ **Format obat "1x sehari"/"0-0-1"** — WAJIB format JAM
+12. ❌ Obat rutin tanpa (obat di pasien)
+13. ❌ Kirim SOAP sebagian
+14. ❌ Body/fisis/data di-bold — hanya header yang bold
