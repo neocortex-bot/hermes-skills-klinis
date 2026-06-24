@@ -23,7 +23,12 @@ triggers:
 
 ## WAJIB — CHECKLIST
 
-SEBELUM KIRIM CENTANG SEMUA. SETIAP KOREKSI CENTANG ULANG.
+### ⛔ CHECKLIST 0 — KIRIM WAJIB CODE BLOCK
+- [ ] **Seluruh SOAP WAJIB dibungkus dalam \`\`\` code block** — jangan kirim sebagai teks biasa
+- [ ] Jangan tanya/konfirmasi dulu ke user — langsung kirim dalam code block
+- [ ] Jika lupa, user akan koreksi "mana code block" — ini PITFALL berat
+
+---
 
 ### CODE BLOCK
 - [ ] Seluruh SOAP dalam ``` code block. Jangan tanya — langsung kirim.
@@ -63,9 +68,20 @@ SEBELUM KIRIM CENTANG SEMUA. SETIAP KOREKSI CENTANG ULANG.
 - [ ] **Jangan "belum dikerjakan"**
 - [ ] Semua KOSONG. Jangan fiktif/—/...
 
+<<<<<<< HEAD
 ### FOTO THORAX & ECHO
 - [ ] **HANYA jika user menyebut. LEWATKAN jika tidak.**
 - [ ] Jangan "belum dikerjakan"
+=======
+### PITFALLS
+- Jangan campur template ACS untuk non-ACS
+- Jangan singkat nama DPJP
+- Diagnosis rujukan harus dipanjangkan
+- Setiap ada koreksi/kesalahan → CENTANG ULANG SEMUA CHECKLIST
+- **WAJIB CODE BLOCK** — selalu kirim SOAP dalam \`\`\` code block, jangan teks biasa
+- **Tanggal EKG/lab = hari ini** — tanggal pemeriksaan di header EKG dan lab adalah tanggal SOAP dibuat (hari ini, 18-06-2026 dst), bukan tanggal hasil ditulis/dicetak. Koreksi jika user beri tanggal berbeda.
+- **Soap lama → tanggal baru** — saat membuat SOAP baru dari data soap lama, update semua tanggal ke hari ini kecuali user menentukan sendiri
+>>>>>>> b308db8 (sync: update skills klinis 2026-06-25)
 
 ### ASSESSMENT
 - [ ] *Mohon izin kami assess dengan:* bold
